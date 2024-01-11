@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="place_Left/base::layout(~{::section})">
+<!-- base is the name of the default web page (base.html) and in section we need to write whole body  -->
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+
+
+<!-- Optional JavaScript; choose one of the two! -->
+
+
+<!-- Option 1: Bootstrap Bundle with Proper -->
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
+
+<!-- Option 2: Separate Proper and Bootstrap JS -->
+<!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+
+<title>HCL Aladino</title>
+</head>
+<body>
+
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9 offset-md-2">
+
+					<div class="my-card">
+
+
+						<div align="center">
+							<div class="mt-0">
+
+							<h4><strong class="text">PLACE_MID</strong> THE BOXES ON THE RACK<strong class="text"> LEFT RACK</strong></h4>
+						</div>
+
+						<div class="btn btn-outline-light btn-lg p-2">
+							<!-- Mid -->
+							<div class="btn  btn-outline-light btn-lg p-2 mt-2">
+								<a th:each="number : ${#numbers.sequence(1, 6)}"
+									th:href="@{/Place/MidPlace_Left_{number}(number=${number})}"
+									class="p-2 me-2 btn btn-outline-danger mt-2"
+									aria-current="page">
+									Box_M_Place_Left_[[${number}]]
+								</a>
+							</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</section>
+</body>
+</html>
+
+<!-- **************************************************************************************************************************************** -->
+<!--
+						<div class="btn btn-outline-light btn-lg p-2">
+
+								<a th:href="@{/Place/MidPlace_Left_1}"  class=" p-2 btn btn-info active "
+								aria-current="page"> Box_ 1</a>
+
+								<a th:href="@{/Place/MidPlace_Left_2}" class=" p-2 btn btn-info active "
+								aria-current="page"> Box_ 2</a>
+
+									<a th:href="@{/Place/MidPlace_Left_3}" class="  p-2 btn btn-info active"
+									aria-current="page"> Box_ 3</a>
+
+
+						</div>
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+-->
+<!-- **************************************************************************************************************************************** -->
+
+

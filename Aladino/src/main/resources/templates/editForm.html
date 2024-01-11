@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<!-- base is the name of the default web page (base.html) and in section we need to write whole body  -->
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+
+
+<!-- Optional JavaScript; choose one of the two! -->
+
+
+<!-- Option 1: Bootstrap Bundle with Proper -->
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
+
+<!-- Option 2: Separate Proper and Bootstrap JS -->
+<!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+
+<title>Edit/Update a New Box</title>
+</head>
+<body>
+
+	<!--   <section class="pic d-flex justify-content-center align-items-center">   -->
+	<section>
+		<div class="container">
+		<div align="center">
+		
+		<!--  	<div class="row">
+				<div class="col-md-6 offset-md-3">
+				
+					<div class="my-card mt-2">
+				<form  th:action="@{/Boxes/saveAddedBox}" method="post"
+					th:object="${boxes}">
+				
+			-->		
+					<form  th:action="@{/Boxes/updatedBox}" method="Post"
+					th:object="${updatedBox}">
+					<div>
+						<h1>Edit/Update a New Box</h1>
+					</div>
+					
+					<!-- 
+					th:field="*{id}"
+					th:field="*{name}" 
+					th:field="*{dimension}" 
+					th:field="*{weight}"
+					th:field="*{boxposition}"
+					 -->
+					<div class="col-md-8">
+						<label for="validationDefault01" class="col-sm-2 col-form-label">
+							Box Id</label>
+						<div class="col-sm-10">
+							<input type="number" class="form-control" id="validationDefault01"
+								 name="id" placeholder="Enter the Box ID" readonly="readonly" >
+								
+								 
+						</div>
+					</div>
+				
+									
+					<div class="col-md-8">
+						<label for="validationDefault01" class="col-sm-2 col-form-label">
+							Name</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="validationDefault01"
+							 name="name" placeholder="Box identity name as small,medium,large " required>
+						</div>
+					</div>
+
+					<div class="col-md-8 ">
+						<label for="validationDefault01" class="col-sm-2 col-form-label">Dimension</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="validationDefault01"
+							 	name="dimension" placeholder="dimension of a box " required>
+						</div>
+					</div>
+					
+					
+					<div class="col-md-8">
+						<label for="validationDefault01" class="col-sm-2 col-form-label">
+							Weight</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="validationDefault01"
+						  name="weight" placeholder="weight of a box " required>
+						</div>
+					</div>
+					
+				<!-- 	
+					<div class="col-md-8">
+						<label for="validationDefault01" class="col-sm-2 col-form-label">
+							Box position</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="validationDefault01"
+							  name="boxposition" placeholder="position of a box in pallet ie. layer 1,2,3... " required>
+							  <!--   th:value="${boxes.boxposition}" th:field="*{boxposition}"
+						 </div>
+					  </div>  
+			 -->
+					
+					<div class="col-8 m-5">
+						<button class="btn btn-primary" type="submit">Add to
+							Submit</button>
+					</div>
+
+				</form>
+
+
+				<!-- 
+					</div>
+				</div>
+				 -->
+			</div>
+		</div>
+
+	</section>
+
+</body>
+</html>
+
+

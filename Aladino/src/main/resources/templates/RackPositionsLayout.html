@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<!-- base is the name of the default web page (base.html) and in section we need to write whole body  -->
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+
+
+<!-- Optional JavaScript; choose one of the two! -->
+
+
+<!-- Option 1: Bootstrap Bundle with Proper -->
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
+
+<!-- Option 2: Separate Proper and Bootstrap JS -->
+<!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+<!-- Define the JavaScript code to listen for the response and update the checkbox -->
+<script>
+    $(document).ready(function() {
+        // Listen for the click event on the "Place Box1 on rack Left_1" button
+        $("#placeBox1Left1Button").click(function() {
+            // Send an AJAX request to the server to place the box
+            $.get("/Place/Place_Left_1", function(response) {
+                // Update the checkbox for Box1 on rack Left_1
+                $("#Box1_Left_1").prop("checked", true);
+            });
+        });
+    });
+</script>
+
+
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+
+<title>HCL Aladino</title>
+<style>
+</style>
+</head>
+<body>
+
+	<section>
+
+	<div class="layout">
+
+			<div align="center" class="heading">
+				<h1>Rack Positions Layout</h1>
+			</div>
+<div align="center">
+<button onclick="location.reload()" class="btn btn-primary" type="button">Refresh Button</button>
+</div>
+			<div class="leftRight">
+				<div align="Left" class="Right ">
+					<button type="button" class="btn btn-outline-dark"><h1>LEFT</h1></button>
+				</div>
+			 	&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+				&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+				&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+				
+				&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+				&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+				&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
+
+				<div align="Right" class="Left">
+					<button type="button" class="btn btn-outline-dark"><h1>RIGHT</h1></button>
+				</div>
+			</div>
+
+<!-- LEFT STARTING POSITION -->
+
+
+			<div class="row align-item-start">
+
+				<div class="col-sm-6">
+					<div class="card border-primary">
+						<div class="card-body">
+							<h5 class="card-title">
+								<b>LEFT</b>
+							</h5>
+							<p class="card-text">
+								Rack side is Left at <strong>Starting position.</strong>
+							</p>
+							<!--      <a href="#" class="btn btn-primary">Go somewhere</a> -->
+							<div class="rackcontainer ">
+								<ol class="rack">
+									<li class="row row--1">
+										<ol class="seats" type="A">
+											<li class="seat"><input type="checkbox" 
+                                    			id="Box1_Left_1" name="Box1_Left_1" value="Box1_Left_1"
+                                   			    th:checked="${boxStatus_Start['Box1_Left_1']}"/> 
+                                               <label for="Box1_Left_1">1A</label>
+                                			</li>
+											<li class="seat"><input type="checkbox" id="1B" /> <label
+												for="1B" >1B</label>
+												</li>
+											<li class="seat"><input type="checkbox" id="1C" /> <label
+												for="1C">1C</label></li>
+											<li class="seat"><input type="checkbox" id="1D" /> <label
+												for="1D">1D</label></li>
+											<li class="seat"><input type="checkbox" id="1E" /> <label
+												for="1E">1E</label></li>
+											<li class="seat"><input type="checkbox" id="1F" /> <label
+												for="1F">1F</label></li>
+										</ol>
+									</li>
+								</ol>
+			 		<div th:each="entry : ${boxStatus_Start}">
+              					<td th:text="${entry.key}"></td>
+               					<td th:text="${entry.value ? 'Available' : 'NotAvailable'}"></td>
+           			 </div> 
+           			 
+           	<!-- 	 <text th:each="box : ${boxes}">
+						    <td th:text="${box.boxId}"></td>
+						    <td th:text="${box.boxName}"></td>
+						    <td>
+						        <input type="checkbox" th:field="*{boxStatus}"
+						         th:value="${box.boxId}" th:checked="${box.available}" />
+						    </td>
+					</text>   -->	
+							</div>
+						</div>
+					</div>
+				</div>
+	<!-- Right Starting Position -->
+			
+				<div class="col-sm-6">
+					<div class="card border-info">
+						<div class="card-body">
+							<h5 class="card-title">
+								<b>RIGHT</b>
+							</h5>
+							<p class="card-text">
+								Rack side is Right at <strong>Starting position.</strong>
+							</p>
+							<!--      <a href="#" class="btn btn-primary">Go somewhere</a> -->
+
+							<div class="rackcontainer ">
+								<ol class="rack ">
+									<li class="row row--1">
+										<ol class="seats" type="SA">
+											<li class="seat"><input type="checkbox" id="1SA" /> <label
+												for="1SA">1SA</label></li>
+											<li class="seat"><input type="checkbox" id="1SB" /> <label
+												for="1SB">1SB</label></li>
+											<li class="seat"><input type="checkbox" id="1SC" /> <label
+												for="1SC">1SC</label></li>
+											<li class="seat"><input type="checkbox" id="1SD" /> <label
+												for="1SD">1SD</label></li>
+											<li class="seat"><input type="checkbox" id="1SE" /> <label
+												for="1SE">1SE</label></li>
+											<li class="seat"><input type="checkbox" id="1SF" /> <label
+												for="1SF">1SF</label></li>
+										</ol>
+									</li>
+							</ol>
+							<div th:each="entry : ${boxStatus_Start}">
+              					<td th:text="${entry.key}"></td>
+               					<td th:text="${entry.value ? 'Available' : 'NotAvailable'}"></td>
+           			 </div> 
+							</div>
+
+						</div>
+					</div>
+				</div>	
+
+<!--LEFT MIDDLE POSITION -->
+		
+
+				<div class="col-sm-6">
+					<div class="card border-primary">
+						<div class="card-body">
+							<h5 class="card-title">
+								<b>LEFT</b>
+							</h5>
+							<p class="card-text">
+								Rack side is Left at <strong>Middle position.</strong>
+							</p>
+							<!--      <a href="#" class="btn btn-primary">Go somewhere</a> -->
+							<div class="rackcontainer ">
+								<ol class="rack">
+									<li class="row row--2">
+										<ol class="seats" type="A">
+											<li class="seat"><input type="checkbox" id="2A" /> <label
+												for="2A">2A</label></li>
+											<li class="seat"><input type="checkbox" id="2B" /> <label
+												for="2B">2B</label></li>
+											<li class="seat"><input type="checkbox" id="2C" /> <label
+												for="2C">2C</label></li>
+											<li class="seat"><input type="checkbox" id="2D" /> <label
+												for="2D">2D</label></li>
+											<li class="seat"><input type="checkbox" id="2E" /> <label
+												for="2E">2E</label></li>
+											<li class="seat"><input type="checkbox" id="2F" /> <label
+												for="2F">2F</label></li>
+										</ol>
+									</li>
+									</ol>
+									<div th:each="leftMid : ${boxMid}">
+              					<td th:text="${leftMid.key}"></td>
+               					<td th:text="${leftMid.value ? 'Available' : 'NotAvailable'}"></td>
+           			 				</div> 
+							</div>
+						</div>
+					</div>
+				</div>
+				
+	<!-- RIGHT Middle Position -->
+			
+				<div class="col-sm-6">
+					<div class="card border-info">
+						<div class="card-body">
+							<h5 class="card-title">
+								<b>RIGHT</b>
+							</h5>
+							<p class="card-text">
+								Rack side is Right at <strong>Middle position.</strong>
+							</p>
+							<!--      <a href="#" class="btn btn-primary">Go somewhere</a> -->
+
+							<div class="rackcontainer ">
+								<ol class="rack">
+									<li class="row row--2">
+										<ol class="seats" type="MA">
+											<li class="seat"><input type="checkbox" id="2MA" /> <label
+												for="2MA">2MA</label></li>
+											<li class="seat"><input type="checkbox" id="2MB" /> <label
+												for="2MB">2MB</label></li>
+											<li class="seat"><input type="checkbox" id="2MC" /> <label
+												for="2MC">2MC</label></li>
+											<li class="seat"><input type="checkbox" id="2MD" /> <label
+												for="2MD">2MD</label></li>
+											<li class="seat"><input type="checkbox" id="2ME" /> <label
+												for="2ME">2ME</label></li>
+											<li class="seat"><input type="checkbox" id="2MF" /> <label
+												for="2MF">2MF</label></li>
+										</ol>
+									</li>
+								</ol>
+									<div th:each="leftMid : ${boxMid}">
+              					<td th:text="${leftMid.key}"></td>
+               					<td th:text="${leftMid.value ? 'Available' : 'NotAvailable'}"></td>
+           			 				</div>
+							</div>
+
+						</div>
+					</div>
+				</div>	
+
+<!--LEFT END POSITION -->
+		
+
+				<div class="col-sm-6">
+					<div class="card border-primary">
+						<div class="card-body">
+							<h5 class="card-title">
+								<b>LEFT</b>
+							</h5>
+							<p class="card-text">
+								Rack side is Left at <strong>End position.</strong>
+							</p>
+							<!--      <a href="#" class="btn btn-primary">Go somewhere</a> -->
+							<div class="rackcontainer ">
+								<ol class="rack">
+									<li class="row row--3">
+										<ol class="seats" type="A">
+											<li class="seat"><input type="checkbox" id="3A" /> <label
+												for="3A">3A</label></li>
+											<li class="seat"><input type="checkbox" id="3B" /> <label
+												for="3B">3B</label></li>
+											<li class="seat"><input type="checkbox" id="3C" /> <label
+												for="3C">3C</label></li>
+											<li class="seat"><input type="checkbox" id="3D" /> <label
+												for="3D">3D</label></li>
+											<li class="seat"><input type="checkbox" id="3E" /> <label
+												for="3E">3E</label></li>
+											<li class="seat"><input type="checkbox" id="3F" /> <label
+												for="3F">3F</label></li>
+										</ol>
+									</li>
+
+								</ol>
+									<div th:each="entry : ${boxEnd}">
+              					<td th:text="${entry.key}"></td>
+               					<td th:text="${entry.value ? 'Available' : 'NotAvailable'}"></td>
+           			 				</div>
+							</div>
+						</div>
+					</div>
+				</div>
+	
+<!-- RIGHT END POSITION -->
+		
+
+				<div class="col-sm-6">
+					<div class="card border-info">
+						<div class="card-body">
+							<h5 class="card-title">
+								<b>RIGHT</b>
+							</h5>
+							<p class="card-text">
+								Rack side is Right at <strong>End position.</strong>
+							</p>
+							<!--      <a href="#" class="btn btn-primary">Go somewhere</a> -->
+							<div class="rackcontainer ">
+								<ol class="rack">
+									<li class="row row--3">
+										<ol class="seats" type="EA">
+											<li class="seat"><input type="checkbox" id="3EA" /> <label
+												for="3EA">3EA</label></li>
+											<li class="seat"><input type="checkbox" id="3EB" /> <label
+												for="3EB">3EB</label></li>
+											<li class="seat"><input type="checkbox" id="3EC" /> <label
+												for="3EC">3EC</label></li>
+											<li class="seat"><input type="checkbox" id="3ED" /> <label
+												for="3ED">3ED</label></li>
+											<li class="seat"><input type="checkbox" id="3EE" /> <label
+												for="3EE">3EE</label></li>
+											<li class="seat"><input type="checkbox" id="3EF" /> <label
+												for="3EF">3EF</label></li>
+										</ol>
+									</li>
+
+								</ol>
+								<div th:each="entry : ${boxEnd}">
+              					<td th:text="${entry.key}"></td>
+               					<td th:text="${entry.value ? 'Available' : 'NotAvailable'}"></td>
+           			 				</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			
+
+
+
+
+		</div>
+	</section>
+
+</body>
+</html>
+
+
+<!--  
+			<ul class="showcase">
+				<li>
+					<div class="seat"></div> <small>N/A</small>
+				</li>
+				<li>
+					<div class="seat selected"></div> <small>Selected</small>
+				</li>
+				<li>
+					<div class="seat occupied"></div> <small>Occupied</small>
+				</li>
+			</ul>
+
+			<div class="container">
+				<div class="screen"></div>
+
+				<div class="row">
+					<div class="seat"></div>
+					<div class="seat"></div>
+					<div class="seat"></div>
+					<div class="seat"></div>
+					<div class="seat"></div>
+					<div class="seat"></div>
+					<div class="seat"></div>
+					<div class="seat"></div>
+				</div>
+-->
