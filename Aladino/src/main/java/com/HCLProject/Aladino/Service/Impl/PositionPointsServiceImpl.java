@@ -105,9 +105,9 @@ public class PositionPointsServiceImpl  implements PositionPointsService{
 		 Optional<PositionsPoints> findById = positionPointsRepo.findById(id);
         if (findById.isPresent()) {
              PositionsPoints  existingPositionPoint = findById.get();
-           	existingPositionPoint.setX(positionPoints.getX());
-            existingPositionPoint.setY(positionPoints.getY());
-            existingPositionPoint.setZ(positionPoints.getZ());
+//           	existingPositionPoint.setX(positionPoints.getX());
+//            existingPositionPoint.setY(positionPoints.getY());
+//            existingPositionPoint.setZ(positionPoints.getZ());
             existingPositionPoint=positionPoints;
             return positionPointsRepo.save(positionPoints);
         } else {
