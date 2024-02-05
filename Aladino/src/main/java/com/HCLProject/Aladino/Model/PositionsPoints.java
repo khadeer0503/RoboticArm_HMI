@@ -26,14 +26,14 @@ public class PositionsPoints  {
     @Column(name="Level")
     private String level;
     
-    @Column(name = "x")
-    private Double x;
- 
-    @Column(name = "y")
-    private Double y;
- 
-    @Column(name = "z")
-    private Double z;
+//    @Column(name = "x")
+//    private Double x;
+//
+//    @Column(name = "y")
+//    private Double y;
+//
+//    @Column(name = "z")
+//    private Double z;
     
     @Column(name = "position_on_rack")
     private String positionOnRack;
@@ -58,9 +58,9 @@ public PositionsPoints(Long id, Boolean isAvailable, String side, String level, 
 		this.isAvailable = isAvailable;
 		this.side = side;
 		this.level = level;
-		this.x = x;
-		this.y = y;
-		this.z = z;
+//		this.x = x;
+//		this.y = y;
+//		this.z = z;
 		this.positionOnRack = positionOnRack;
 		this.boxes = boxes;
 	}
@@ -96,30 +96,30 @@ public void setLevel(String level)
 	{
 		this.level = level;
 	}
-public Double getX()
-	{
-		return x;
-	}
-public void setX(Double x)
-	{
-		this.x = x;
-	}
-public Double getY()
-	{
-		return y;
-	}
-public void setY(Double y)
-	{
-		this.y = y;
-	}
-public Double getZ()
-	{
-		return z;
-	}
-public void setZ(Double z)
-	{
-		this.z = z;
-	}
+//public Double getX()
+//	{
+//		return x;
+//	}
+//public void setX(Double x)
+//	{
+//		this.x = x;
+//	}
+//public Double getY()
+//	{
+//		return y;
+//	}
+//public void setY(Double y)
+//	{
+//		this.y = y;
+//	}
+//public Double getZ()
+//	{
+//		return z;
+//	}
+//public void setZ(Double z)
+//	{
+//		this.z = z;
+//	}
 public String getPositionOnRack()
 	{
 		return positionOnRack;
@@ -136,17 +136,16 @@ public void setBoxes(Boxes boxes)
 	{
 		this.boxes = boxes;
 	}
-@Override
-public String toString()
-	{
-		return "PositionsPoints [id=" + id + ", isAvailable=" + isAvailable + ", side=" + side + ", level=" + level
-				+ ", x=" + x + ", y=" + y + ", z=" + z + ", positionOnRack=" + positionOnRack + ", boxes=" + boxes
-				+ "]";
-	}
-	
-	
-	
 
-    
-  
+	@Override
+	public String toString() {
+		return "PositionsPoints{" +
+				"id=" + id +
+				", isAvailable=" + isAvailable +
+				", side='" + side + '\'' +
+				", level='" + level + '\'' +
+				", positionOnRack='" + positionOnRack + '\'' +
+				", boxes=" + boxes +
+				'}';
+	}
 }

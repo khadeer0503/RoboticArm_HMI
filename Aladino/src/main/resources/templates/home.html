@@ -63,9 +63,26 @@
 					<a th:href="@{/Place/PositionsAvailability}"
 					class=" p-2 btn btn-outline-dark" aria-current="page">GET ALL POSITIONS OCCUPIED</a>
 
+						<div class="card border-success mb-3" >
+							<div class="row g-0">
+								<div class="col-md-3 my-2 mx-2" style="border-right: 5px solid #822433;">
+									<!--left side bg -->
+									<div class="card left-side mt-2" >
+										<strong class="mx-2"> Creating Boxes and Positions  </strong>
+									</div>
+								</div>
+								<div class="col-md-8">
+									<div class="card-body d-grid gap-2">
+										<a th:href="@{/Boxes/getAll}"
+										   class=" p-2 btn btn-outline-secondary " aria-current="page">GET ALL THE BOXES</a>
+										<a th:href="@{/Positions/getAll}"
+										   class=" p-2 btn btn-outline-success " aria-current="page">GET ALL POSITIONS ON RACK</a>
+									</div>
+								</div>
+							</div>
+						</div>
 					<!-- <div class="d-grid gap-2 "> -->
-						<a th:href="@{/Boxes/getAll}"
-						class=" p-2 btn btn-outline-secondary " aria-current="page">GET ALL THE BOXES</a>
+
 
 
 	<!--

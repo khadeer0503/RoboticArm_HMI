@@ -38,7 +38,7 @@ public class PlaceRobotController {
     private Map<String, Boolean> boxStatus = new HashMap<>();
     private Map<String, Boolean> boxMid = new HashMap<>();
     private Map<String, Boolean> boxEnd = new HashMap<>();
-/*   public PlaceRobotController() {
+   public PlaceRobotController() {
         // Initialize the box status as available
     	//Side Left- Position Start(1)
         boxStatus.put("Box1", false);
@@ -47,7 +47,7 @@ public class PlaceRobotController {
         boxStatus.put("Box4", false);
         boxStatus.put("Box5", false);
         boxStatus.put("Box6", false);
-    } */
+    }
 //  public void PlaceRobotController1() {
 /*
       //Side Left- Position Mid(2)

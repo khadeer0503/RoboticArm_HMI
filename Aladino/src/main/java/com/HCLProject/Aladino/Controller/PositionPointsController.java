@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
 
+import com.HCLProject.Aladino.Model.Boxes;
+import com.HCLProject.Aladino.Service.BoxesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,20 +32,29 @@ import com.HCLProject.Aladino.Service.PositionPointsService;
 public class PositionPointsController {
 	@Autowired
 	private PositionPointsService positionPointsService;
+	@Autowired
+	private BoxesService boxesService;
 	
     public PositionPointsService getPositionPointsService() {
 		return positionPointsService;
 	}
-
-	public void setPositionPointsService(PositionPointsService positionPointsService) {
-		this.positionPointsService = positionPointsService;
+	public void setPositionPointsService(PositionPointsService positionPointsService) {	this.positionPointsService = positionPointsService;	}
+	//getter boxes Service
+	public BoxesService getBoxesService() {
+		return boxesService;
 	}
-	
-//  listing all the Boxes.
+	//setter boxes Service
+	public void setBoxesService(BoxesService boxesService) {
+		this.boxesService = boxesService;
+	}
+
+
+	//  listing all the Boxes.
 					@GetMapping("/getAll")
 					public String getAllpositions(Model m)
 					{
 						List<PositionsPoints> getAll = this.positionPointsService.getAllPosition();
+						List<Boxes> getAllBoxes = this.boxesService.getAllBoxes();
 						m.addAttribute("ListPositions", getAll);
 						 m.addAttribute("title","HCL Aladino");
 						return "getAllPositions";
@@ -111,7 +122,7 @@ public class PositionPointsController {
 	public String addBoxesPositionPoints(@ModelAttribute("positionsPoints") PositionsPoints positionsPoints, Model m, RedirectAttributes ra)
 	{
 		m.addAttribute("title","HCL Aladino");
-		PositionPointsService.createPosition(positionsPoints);
+		this.positionPointsService.createPosition(positionsPoints);
 		//m.addAttribute("PositionsPoints", positionsPoints);
 		ra.addFlashAttribute("message","Box Position is successfully Added");
 		System.out.println(positionsPoints);
