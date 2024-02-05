@@ -25,7 +25,7 @@ import com.HCLProject.Aladino.Service.BoxesService;
 //@RestController
 @RequestMapping("/Boxes")
 public class BoxesController {
-	
+
 @Autowired
 	private BoxesService boxesService;
 	//getter boxes Service
@@ -36,25 +36,24 @@ public class BoxesController {
 	public void setBoxesService(BoxesService boxesService) {
 		this.boxesService = boxesService;
 	}
-		
+
 /*
 	//getting all the Positions occupied /filled
-	 @GetMapping("/")
-	    public String showAvailablePositions(Model model) {
-	        List<PositionsPoints> availablePositions = boxesService.getAvailablePositions();
-	        model.addAttribute("positions", availablePositions);
-	        return "positions";
-	    }
-	*/	
-	
-	
+	@GetMapping("/")
+	public String showAvailablePositions(Model model) {
+	List<PositionsPoints> availablePositions = boxesService.getAvailablePositions();
+	model.addAttribute("positions", availablePositions);
+	return "positions";
+	}
+	*/
+
 //   listing all the Boxes.
 					@GetMapping("/getAll")
 					public String getAllboxes(Model m)
 					{
 						List<Boxes> getAll = this.boxesService.getAllBoxes();
 						m.addAttribute("ListBoxes", getAll);
-						 m.addAttribute("title","HCL Aladino");
+						m.addAttribute("title","HCL Aladino");
 						return "getAllBoxes";
 					}
 
@@ -65,9 +64,9 @@ public class BoxesController {
 						m.addAttribute("title","HCL Aladino");
 						Boxes box =	this.boxesService.findbyId(id);
 						m.addAttribute("boxes", box);
-						 return "redirect:/Boxes/getAll";
+						return "redirect:/Boxes/getAll";
 					}
-					
+
 
 //   Add new Boxes 
     	@GetMapping("/addBox")
@@ -90,7 +89,7 @@ public class BoxesController {
 		}
 
 //updateOrSave Boxes
-//@PutMapping("/updatingBox/{id}")   			
+//@PutMapping("/updatingBox/{id}")
 		 @RequestMapping(value="/editForm/{id}",method = {RequestMethod.PUT,RequestMethod.GET }) 
 			public String updatingBox(@PathVariable("id") Long id ,@ModelAttribute("boxes") Boxes boxes,Model m) 
 		{
@@ -113,12 +112,12 @@ public class BoxesController {
 				}
 			System.out.println("updating box");
 			return "editForm";
-			
+
 		}
-		
+
 //@PostMapping("/updatedBox/{id}")
-		@RequestMapping(value="/updatedBox/{id}",method = {RequestMethod.POST,RequestMethod.GET })
-		 public String updateBox(@PathVariable Long id, @ModelAttribute Boxes boxes, Model model) throws BoxNotFoundException {
+		@RequestMapping(value="/updatedBox/{id}",method = {RequestMethod.PUT ,RequestMethod.POST,RequestMethod.GET })
+		public String updateBox(@PathVariable Long id, @ModelAttribute Boxes boxes, Model model) throws BoxNotFoundException {
 			Boxes existingBox = boxesService.findbyId(id);
 			//.orElseThrow(() -> new IllegalArgumentException("Invalid box id:" + id));
 			existingBox.setDimension(boxes.getDimension());
@@ -126,16 +125,12 @@ public class BoxesController {
 			existingBox.setWeight(boxes.getWeight());
 			existingBox.setName(boxes.getName());
 
-
 			Boxes updatedBox = boxesService.saveBox(existingBox);
 			model.addAttribute("boxes", updatedBox);
 			//return "editForm";
 			return "redirect:/Boxes/getAll";
 		}
-	
-	
-		
-		
+
 //delete by id
 //@DeleteMapping("/delete/{id}")
 		@RequestMapping(value="/delete/{id}",method = {RequestMethod.DELETE,RequestMethod.GET })
@@ -146,19 +141,17 @@ public class BoxesController {
 		}
 
 
-}	
-		
-		
+}
 
 
-	
-/*	
-	
-	// This code is for Rest-full web services 
 
- 
+/*
+
+	// This code is for Rest-full web services
+
+
 	//Creating boxes
-	
+
 	    @PostMapping("/create")
 	    public ResponseEntity<Boxes>  create(@RequestBody Boxes box){
 		 Boxes addbox = null;
@@ -171,9 +164,7 @@ public class BoxesController {
 	        }
 	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 	    }
-	    
-	    
-	    
+
 	    //Updating boxes
 	    @PutMapping("/update/{id}")
 	    public  ResponseEntity<Boxes> update(@RequestBody Boxes box, @PathVariable("id") Long id) {
@@ -200,7 +191,7 @@ public class BoxesController {
         boxService.updateBox(existingBox);
         return ResponseEntity.ok().build();
     } */
-	    
+
 /*
 	    //deleting boxes
 	    @DeleteMapping("/delete/{id}")
@@ -214,8 +205,7 @@ public class BoxesController {
 	        }
 	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 	    }
-	    
-	    
+
 	    //getting one boxes
 	    @GetMapping("/get/{id}")
 	    public  ResponseEntity<Boxes> getById(@RequestBody Boxes box, @PathVariable("id") Long id) {
@@ -230,8 +220,7 @@ public class BoxesController {
 	        }
 	        return ResponseEntity.status(HttpStatus.FOUND).build();
 	    }
-	    
-	    
+
 	  //list all boxes
 	    @GetMapping("/getAll")
 	    public ResponseEntity<List<Boxes>> getAll()
@@ -248,7 +237,7 @@ public class BoxesController {
 
 	        return ResponseEntity.status(HttpStatus.FOUND).build();
 	    }
-	   
+ 
 }
-	      
+
 */

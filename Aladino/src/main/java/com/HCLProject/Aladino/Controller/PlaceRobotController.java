@@ -20,7 +20,7 @@ import com.HCLProject.Aladino.Service.BoxesService;
 public class PlaceRobotController {
 	@Autowired
 	private BoxesService boxesService;
-		
+
 	public BoxesService getBoxesService()
 		{
 			return boxesService;
@@ -31,15 +31,14 @@ public class PlaceRobotController {
 		}
 
 	private static final String ROBODK_MESSAGE = "--- Program is Running in RoboDK Application, kindly do check.";
-	 
+
 	 // Keep track of the boxes and their status
-	
+
 	//Left
     private Map<String, Boolean> boxStatus = new HashMap<>();
     private Map<String, Boolean> boxMid = new HashMap<>();
     private Map<String, Boolean> boxEnd = new HashMap<>();
-    
- /*   public PlaceRobotController() {
+/*   public PlaceRobotController() {
         // Initialize the box status as available
     	//Side Left- Position Start(1)
         boxStatus.put("Box1", false);
@@ -50,7 +49,7 @@ public class PlaceRobotController {
         boxStatus.put("Box6", false);
     } */
 //  public void PlaceRobotController1() {
-/*        
+/*
       //Side Left- Position Mid(2)
     	boxMid.put("Box7", false);
     	boxMid.put("Box8", false);
@@ -58,7 +57,7 @@ public class PlaceRobotController {
     	boxMid.put("Box10", false);
     	boxMid.put("Box11", false);
     	//boxMid.put("Box12", false);
-  
+
   //  public void PlaceRobotController() {
         //Side Left- Position End(3)
     	boxEnd.put("Box1", false);
@@ -79,9 +78,9 @@ public class PlaceRobotController {
         boxEnd.put("Box4_200x200", false);
         boxEnd.put("Box5_200x200", false);
         boxEnd.put("Box6_200x200", false);
-    }  
-        // Add more boxes as needed   
-         * 
+    }
+        // Add more boxes as needed
+         *
          * @PostMapping("/place-boxes")
 public ResponseEntity<String> placeBoxesOnRack() {
     List<Boxes> boxes = boxesService.getAllBoxes();
@@ -118,8 +117,8 @@ private Box getAvailableBox(List<Box> boxes) {
 }
 
  */
-    
- 	 private String runPythonScript(String scriptName) {
+
+ 	private String runPythonScript(String scriptName) {
  	       StringBuilder output = new StringBuilder();
  	          try {
  	               ProcessBuilder processBuilder = new ProcessBuilder("python", "J:/Aladino/Aladino/src/" + scriptName);
@@ -130,7 +129,7 @@ private Box getAvailableBox(List<Box> boxes) {
  	               String line;
  	               while ((line = reader.readLine()) != null)
  	               {
- 	                   output.append(line).append("\n");
+ 	            	output.append(line).append("\n");
  	               }
 
  	               int exitCode = process.waitFor();
@@ -141,13 +140,12 @@ private Box getAvailableBox(List<Box> boxes) {
  	                   }
  	           return output.toString()
  	        		   .concat(ROBODK_MESSAGE);
- 	       }
- 	 
-//------------------PLACING THE OBJECTS SIDE LEFT ----------------------------------------------------	   
-   
+}
+
+//------------------PLACING THE OBJECTS SIDE LEFT ----------------------------------------------------
+
  //	 -------------------------   START   ---------------------------------------------------------
-	 
- 	
+
  	//Box status of availability
  	@RequestMapping("/PositionsAvailability")
 		@GetMapping("/BoxStatus")
@@ -156,7 +154,7 @@ private Box getAvailableBox(List<Box> boxes) {
 		    model.addAttribute("boxStatus_Start", boxStatus);
 		    return "RackPositionsLayout";
 		}
- 
+
 		@GetMapping("/BoxMid")
 		public String getBoxState1(Model model) {
 			// Add the box state to the model
@@ -651,18 +649,18 @@ private Box getAvailableBox(List<Box> boxes) {
  		   		 		  		   		 		           return runPythonScript("python/PlaceRight/E_Place_Right_200x200_4.py");
  		   		 		  		   		 		       }
  		   		 		 //5 - dimension of the Box is : 200*200*200
- 		   		 		  		   		 		       
+
  		   		 		  		   		 		       @GetMapping("/E_Place_Right_200x200_5")
  		   		 		  		   		 		       @ResponseBody
  		   		 		  		   		 		       public String E_Place_Right_200x200_5() {
  		   		 		  		   		 		           return runPythonScript("python/PlaceRight/E_Place_Right_200x200_5.py");
  		   		 		  		   		 		       }
  		   		 		 //6 - dimension of the Box is : 200*200*200
- 		   		 		  		   		 		       
+
 		 		   		 		  		   		 		       @GetMapping("/E_Place_Right_200x200_6")
 		 		   		 		  		   		 		       @ResponseBody
 		 		   		 		  		   		 		       public String E_Place_Right_200x200_6() {
 		 		   		 		  		   		 		           return runPythonScript("python/PlaceRight/E_Place_Right_200x200_6.py");
 		 		   		 		  		   		 		       }	   		 		       
-	   		 		       
+
 }

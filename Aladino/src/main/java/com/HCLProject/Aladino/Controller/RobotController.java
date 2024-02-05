@@ -264,7 +264,8 @@ public class RobotController {
         return output.toString().concat("Pick_Approach Program is Running in RoboDK Application, kindly do check.");
     }
 
-   
+
+
    @GetMapping("/Pick_Box_Layer_1")
 	    @ResponseBody
 	    public String Pick_Box_Layer_1() {

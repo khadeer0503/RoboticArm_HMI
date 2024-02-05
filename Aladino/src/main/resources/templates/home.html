@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	th:replace="base::layout(~{::section})">
-	 <!-- base is the name of the default web page (base.html) and in section we need to write whole body  -->
+	<!-- base is the name of the default web page (base.html) and in section we need to write whole body  -->
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -9,12 +9,11 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-     rel="stylesheet"
-     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" 
-     crossorigin="anonymous">
-     
-     
-     <!-- Optional JavaScript; choose one of the two! -->
+    rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+    crossorigin="anonymous">
+
+    <!-- Optional JavaScript; choose one of the two! -->
 
 
     <!-- Option 1: Bootstrap Bundle with Proper -->
@@ -25,14 +24,14 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     -->
-	
+
 	<link rel="stylesheet" th:href="@{/css/style.css}" />
-	
+
     <title>HCL Aladino</title>
-  </head>
-  <body>
-  
-  <!--   <section class="pic d-flex justify-content-center align-items-center">   -->
+</head>
+<body>
+
+<!--   <section class="pic d-flex justify-content-center align-items-center">   -->
 	<section>
 		<div class="container">
 			<div align="center">
@@ -42,72 +41,69 @@
 				<!-- 			</div> -->
 
 				<div class="mt-5">
-				
-    				<h1>HCL Aladino</h1>
+
+    <h1>HCL Aladino</h1>
 					</div>
-					
+
 				<div class="mt-5">
-					
-					
+
 					<div class="d-grid gap-2 col-6 mx-auto">
-					
-					  <a th:href="@{/pick}" 
-					  class=" p-2 btn btn-outline-danger " aria-current="page">PICK</a>
-					  
-					  
-					 <!--   <div class="d-grid gap-2 ">   -->
-					  <a th:href="@{/place}" 
-					  class=" p-2 btn btn-outline-primary" aria-current="page">PLACE</a>
-					  
-					  
-					 <!--  <div class="d-grid gap-2 "> -->
-					  <a th:href="@{/drop_Left}" 
-					  class="  p-2 btn btn-outline-warning" aria-current="page">DROP</a>
-					  
-					 <a th:href="@{/Place/PositionsAvailability}" 
-					  class=" p-2 btn btn-outline-dark" aria-current="page">GET ALL POSITIONS OCCUPIED</a>
-					
-					 
-							  
-	<!--		
-	  
-					  <a th:href="@{/Place/BoxMid}" 
-					  class=" p-2 btn btn-secondary active" aria-current="page">GET ALL MID-POSITIONS OCCUPIED</a>
-					  		
-					 <a th:href="@{/Place/BoxEnd}" 
-					  class=" p-2 btn btn-secondary active" aria-current="page">GET ALL END-POSITIONS OCCUPIED</a>
-					 			
-				    	<div class="d-grid gap-2 ">
-					   <a th:href="@{/Boxes/getAll}" 
-					  class=" p-2 btn btn-success active" aria-current="page">GET ALL THE BOXES</a>
-					
-					  <a th:href="@{/Boxes/addBox}"
-					  class=" p-2 btn btn-info active" aria-current="page">ADD THE BOXES</a>
-					
-					 <a th:href="@{/Positions/getAll}" 
-					  class=" p-2 btn btn-success active" aria-current="page">GET ALL POSITIONS ON RACK</a>
-					  
-					 
-				</div>	
-					
-				  	<a th:href="@{/update/{id}}">
+
+					<a th:href="@{/pick}"
+					class=" p-2 btn btn-outline-danger " aria-current="page">PICK</a>
+
+					<!--   <div class="d-grid gap-2 ">   -->
+					<a th:href="@{/place}"
+					class=" p-2 btn btn-outline-primary" aria-current="page">PLACE</a>
+
+					<!--  <div class="d-grid gap-2 "> -->
+					<a th:href="@{/drop_Left}"
+					class="  p-2 btn btn-outline-warning" aria-current="page">DROP</a>
+
+					<a th:href="@{/Place/PositionsAvailability}"
+					class=" p-2 btn btn-outline-dark" aria-current="page">GET ALL POSITIONS OCCUPIED</a>
+
+					<!-- <div class="d-grid gap-2 "> -->
+						<a th:href="@{/Boxes/getAll}"
+						class=" p-2 btn btn-outline-secondary " aria-current="page">GET ALL THE BOXES</a>
+
+
+	<!--
+					<a th:href="@{/Place/BoxMid}"
+					class=" p-2 btn btn-secondary active" aria-current="page">GET ALL MID-POSITIONS OCCUPIED</a>
+
+					<a th:href="@{/Place/BoxEnd}"
+					class=" p-2 btn btn-secondary active" aria-current="page">GET ALL END-POSITIONS OCCUPIED</a>
+
+				    <div class="d-grid gap-2 ">
+					<a th:href="@{/Boxes/getAll}"
+					class=" p-2 btn btn-success active" aria-current="page">GET ALL THE BOXES</a>
+
+					<a th:href="@{/Boxes/addBox}"
+					class=" p-2 btn btn-info active" aria-current="page">ADD THE BOXES</a>
+
+					<a th:href="@{/Positions/getAll}"
+					class=" p-2 btn btn-success active" aria-current="page">GET ALL POSITIONS ON RACK</a>
+
+				</div>
+
+				<a th:href="@{/update/{id}}">
 						<h2>Update the Boxes</h2>
 					</a>
-					
+
 					<a th:href="@{/delete/{id}}">
 						<h2>Delete the Boxes</h2>
 					</a>
-				
-		-->
+
+	-->
 				</div>
-				
-				
+
 			</div>
 		</div>
 
 </section>
-    
-  </body>
+
+</body>
 </html>
 
 
