@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.HCLProject.Aladino.Exception.BoxNotFoundException;
 import com.HCLProject.Aladino.Model.Boxes;
 import com.HCLProject.Aladino.Service.BoxesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,14 +22,11 @@ public class PickRobotController {
 
 	@Autowired
 	private BoxesService boxesService;
+
 	//getter boxes Service
-	public BoxesService getBoxesService() {
-		return boxesService;
-	}
+	public BoxesService getBoxesService() {		return boxesService;	}
 	//setter boxes Service
-	public void setBoxesService(BoxesService boxesService) {
-		this.boxesService = boxesService;
-	}
+	public void setBoxesService(BoxesService boxesService) {		this.boxesService = boxesService;	}
 
 	private static final String ROBODK_MESSAGE = "--- Program is Running in RoboDK Application, kindly do check.";
 
@@ -72,18 +71,18 @@ public class PickRobotController {
 	       @GetMapping("/Pick_Approach")
 	       @ResponseBody
 	       public String runRobotProgram() {
-	           return runPythonScript("Pick_Approach_Basic.py");
+	        return runPythonScript("Pick_Approach_Basic.py");
 	       }
 
 //----------------------  PICKING THE OBJECTS---------------------------------------------------
+
+
 
 //1 - dimension of the Box is : 100*100*100
 
 		@GetMapping("/Pick_Box_Layer_{number}")
 	    @ResponseBody
 		public String Pick_Box_Layer(@PathVariable Long number) {
-			//List<Boxes> getAll = this.boxesService.getAllBoxes();
-			//Boxes box =	this.boxesService.findbyId(number);
 			String Pick_Box_Layer = String.format("Pick_Box_Layer_%d.py", number);
         return runPythonScript(Pick_Box_Layer);
 		}

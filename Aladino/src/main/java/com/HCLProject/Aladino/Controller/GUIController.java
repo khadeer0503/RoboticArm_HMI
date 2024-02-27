@@ -1,41 +1,16 @@
 package com.HCLProject.Aladino.Controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.HCLProject.Aladino.Service.BoxesService;
-import com.HCLProject.Aladino.Service.PositionPointsService;
+
+
 
 
 @Controller
 public class GUIController {
-
-	@Autowired
-	private BoxesService boxesService;
-
-	//getter boxes Service
-	public BoxesService getBoxesService() {
-		return boxesService;
-	}
-	//setter boxes Service
-	public void setBoxesService(BoxesService boxesService) {
-		this.boxesService = boxesService;
-	}
-
-	@Autowired
-	private PositionPointsService positionPointsService;
-
-    public PositionPointsService getPositionPointsService() {
-		return positionPointsService;
-	}
-
-	public void setPositionPointsService(PositionPointsService positionPointsService) {
-		this.positionPointsService = positionPointsService;
-	}
-
 
 // Normal home page
 			@RequestMapping("/")

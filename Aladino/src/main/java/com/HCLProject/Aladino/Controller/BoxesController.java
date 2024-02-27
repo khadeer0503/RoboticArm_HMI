@@ -3,8 +3,6 @@ package com.HCLProject.Aladino.Controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +12,6 @@ import com.HCLProject.Aladino.Exception.BoxNotFoundException;
 import com.HCLProject.Aladino.Exception.PositionAlreadyFullException;
 import com.HCLProject.Aladino.Exception.PositionNotFoundException;
 import com.HCLProject.Aladino.Model.Boxes;
-import com.HCLProject.Aladino.Model.PositionsPoints;
 import com.HCLProject.Aladino.Service.BoxesService;
 
 
@@ -36,16 +33,6 @@ public class BoxesController {
 	public void setBoxesService(BoxesService boxesService) {
 		this.boxesService = boxesService;
 	}
-
-/*
-	//getting all the Positions occupied /filled
-	@GetMapping("/")
-	public String showAvailablePositions(Model model) {
-	List<PositionsPoints> availablePositions = boxesService.getAvailablePositions();
-	model.addAttribute("positions", availablePositions);
-	return "positions";
-	}
-	*/
 
 //   listing all the Boxes.
 					@GetMapping("/getAll")
@@ -90,7 +77,7 @@ public class BoxesController {
 
 //updateOrSave Boxes
 //@PutMapping("/updatingBox/{id}")
-		 @RequestMapping(value="/editForm/{id}",method = {RequestMethod.PUT,RequestMethod.GET }) 
+		@RequestMapping(value="/editForm/{id}",method = {RequestMethod.PUT,RequestMethod.GET }) 
 			public String updatingBox(@PathVariable("id") Long id ,@ModelAttribute("boxes") Boxes boxes,Model m) 
 		{
 			m.addAttribute("title","HCL Aladino");
@@ -123,7 +110,7 @@ public class BoxesController {
 			Boxes existingBox = boxesService.findbyId(id);
 			//.orElseThrow(() -> new IllegalArgumentException("Invalid box id:" + id));
 			existingBox.setDimension(boxes.getDimension());
-			existingBox.setpositionsPoints(boxes.getpositionsPoints());
+		//	existingBox.setPositionsPoints(boxes.getPositionsPoints());
 			existingBox.setWeight(boxes.getWeight());
 			existingBox.setName(boxes.getName());
 
@@ -228,7 +215,7 @@ public class BoxesController {
 	    public ResponseEntity<List<Boxes>> getAll()
 	    	{
 
-	        List<Boxes> all =this.boxesService.getAllBoxes();
+List<Boxes> all =this.boxesService.getAllBoxes();
 
 	        try {
 	            if(all.size() <= 0 )
@@ -239,7 +226,7 @@ public class BoxesController {
 
 	        return ResponseEntity.status(HttpStatus.FOUND).build();
 	    }
- 
+
 }
 
 */

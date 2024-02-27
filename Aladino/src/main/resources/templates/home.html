@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	th:replace="base::layout(~{::section})">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
 	<!-- base is the name of the default web page (base.html) and in section we need to write whole body  -->
 <head>
     <!-- Required meta tags -->
@@ -42,10 +41,10 @@
 
 				<div class="mt-5">
 
-    <h1>HCL Aladino</h1>
+    <h1>Robotic Arm</h1>
 					</div>
 
-				<div class="mt-5">
+				<div class="mt-3 mb-5">
 
 					<div class="d-grid gap-2 col-6 mx-auto">
 
@@ -74,9 +73,13 @@
 								<div class="col-md-8">
 									<div class="card-body d-grid gap-2">
 										<a th:href="@{/Boxes/getAll}"
-										   class=" p-2 btn btn-outline-secondary " aria-current="page">GET ALL THE BOXES</a>
+										class=" p-2 btn btn-outline-danger " aria-current="page">GET ALL THE BOXES</a>
 										<a th:href="@{/Positions/getAll}"
-										   class=" p-2 btn btn-outline-success " aria-current="page">GET ALL POSITIONS ON RACK</a>
+										class=" p-2 btn btn-outline-primary " aria-current="page">GET ALL POSITIONS ON RACK</a>
+										<a th:href="@{/racks/}"
+										class=" p-2 btn btn-outline-warning " aria-current="page">GET ALL RACKS</a>
+										<a th:href="@{/shelf/}"
+										class=" p-2 btn btn-outline-success " aria-current="page">GET ALL SHELFS ON RACK</a>
 									</div>
 								</div>
 							</div>
@@ -117,7 +120,7 @@
 
 			</div>
 		</div>
-
+		</div>
 </section>
 
 </body>

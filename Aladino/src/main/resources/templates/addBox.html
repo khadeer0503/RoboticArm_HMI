@@ -40,20 +40,20 @@
 	<section>
 		<div class="container">
 		<div align="center">
-		
+
 		<!--	<div class="row">
-			  	<div class="col-md-6 offset-md-3">
-				
+			<div class="col-md-6 offset-md-3">
+
 					<div class="my-card mt-2">
 			-->
-			
+
 				<form  th:action="@{/Boxes/saveAddedBox}" method="post"
 					th:object="${boxes}">
 
 					<div>
 						<h1>Add a New Box</h1>
 					</div>
-					<!--  
+					<!--
 					<div class="col-md-8">
 						<label for="validationDefault01" class="col-sm-2 col-form-label">
 							ID</label>
@@ -63,7 +63,7 @@
 						</div>
 					</div>
 					-->
-					
+
 					<div class="col-md-8">
 						<label for="validationDefault01" class="col-sm-2 col-form-label">
 							Name</label>
@@ -81,8 +81,7 @@
 							th:value="${boxes.dimension}" 	th:field="*{dimension}" name="dimension" placeholder="dimension of a box " required>
 						</div>
 					</div>
-					
-					
+
 					<div class="col-md-8">
 						<label for="validationDefault01" class="col-sm-2 col-form-label">
 							Weight</label>
@@ -91,38 +90,38 @@
 							th:value="${boxes.weight}" 	th:field="*{weight}" name="weight" placeholder="weight of a box " required>
 						</div>
 					</div>
-					
-				<!--  						
-					<div class="col-md-8">
+
+
+					<!-- <div class="col-md-8">
 						<label for="validationDefault01" class="col-sm-2 col-form-label">
-							Box Position</label>
+							Box Position on Rack</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="validationDefault01"
-							th:value="${boxes.boxposition}" 	th:field="*{boxposition}" name="boxposition" placeholder="position of a box in pallet ie. layer 1,2,3... " required>
+							th:value="${boxes.positionsPoints}" 	th:field="*{positionsPoints}" name="positionsPoints"  required>
 						</div>
-					
-						</div>
-					-->
+
+						</div> -->
+
 					&nbsp
 					&nbsp
 					&nbsp
 				<!--	 Buttons field  -->
 						<div class="container text-center">
-						 	
-							 <button type="submit" class="btn bg-primary text-white">Submit</button>
-							 &nbsp
+
+							<button type="submit" class="btn bg-primary text-white">Submit</button>
+							&nbsp
 					&nbsp
 					&nbsp
-							 <button type="reset" class="btn btn-warning text-white ">Reset </button>
+							<button type="reset" class="btn btn-warning text-white ">Reset </button>
 						</div>
 
 				</form>
 
-				<!-- 
+				<!--
 						</div>
 					</div>
-				 -->
-				 
+				-->
+
 				</div>
 			</div>
 		</div>

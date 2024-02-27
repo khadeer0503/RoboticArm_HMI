@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Rack</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <script type="text/javascript" th:href="@{/js/script.js}"></script>
+</head>
+
+<body>
+<section class="pic d-flex justify-content-center align-items-center bg-light ">
+    <div class="container">
+        <div align="center">
+
+            <div class="card border-success mb-3" style="margin-top: 80px;">
+                <div class="row g-0">
+                    <div class="col-md-3 bg-dark" style="border-right: 8px solid #121212;">
+                        <!--left side bg -->
+                        <div class="backbtn mt-5" >
+                            <a href="/racks/" <span> <i class="fa-solid fa-circle-left"></i> </span>Back to Lists</a>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-header bg-transparent border-success">
+                            <h4>Add Rack</h4>
+                        </div>
+                        <div class="card-body">
+
+
+                            <form th:action="@{/racks/saveRack}" method="post" th:object="${rack}" class="mt-2">
+                                <!--   Rack Name -->
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default"> Rack Name</span>
+                                    <input type="text" class="form-control" aria-label="Sizing example input"
+                                        aria-describedby="inputGroup-sizing-default" id="validationDefault01"
+                                        th:field="*{name}" name="name" placeholder="Rack Name " th:value="${rack.name}" required >
+                                </div>
+
+                                <!--  Rack Side -->
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default"> Rack Side</span>
+                                    <input type="text" class="form-control" aria-label="Sizing example input"
+                                        aria-describedby="inputGroup-sizing-default" id="validationDefault01"
+                                        th:field="*{side}" name="side" placeholder="Rack Side " th:value="${rack.side}" required >
+                                </div>
+
+                                <div class="card-footer bg-transparent  d-grid gap-2 m-25"
+                                    style="max-width: 100%;margin-top: 50px;">
+                                    <button class="btn btn-success " type="submit">ADD RACK</button>
+                                </div>
+                        </form>
+
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

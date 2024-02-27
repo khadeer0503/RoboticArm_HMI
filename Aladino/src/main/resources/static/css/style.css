@@ -1,6 +1,6 @@
-body
-{
-background-color:#ffffff;
+body{
+  zoom: 90%;
+  background-image: radial-gradient(to right, #DEE4EA , #378B29);
 }
 
 .text
@@ -13,13 +13,13 @@ color:red
 	background-color:#dc3545;
 }
 */
-.container
+/* .container
 {
 background-color:#ffffff;
 width:auto;
 height:auto;
 background-color:  rgb(255, 255, 255)
-}
+} */
 /*sidebar media*/
 
 @media only screen and (max-width:600px){

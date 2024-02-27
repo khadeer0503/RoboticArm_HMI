@@ -46,6 +46,7 @@
 					</div>
 					<div class="">
 						<h2><a th:href="@{/Boxes/addBox}" class="btn btn-primary">Add a New Box</a></h2>
+						<button onclick="location.reload()" class="btn btn-primary" type="button">Refresh Table</button>
 					</div>
 
 
@@ -56,7 +57,7 @@
 							<th>Name</th>
 							<th>Dimension</th>
 							<th>Weight</th>
-						<!--    <th>Box Position</th> 	-->
+<!--						   <th>Rack_Info</th>-->
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -67,8 +68,8 @@
 						<td th:text="${boxes.name}"></td>
 	 					<td th:text="${boxes.dimension}"></td>
 	 					<td th:text="${boxes.weight}"></td>
-	 				<!--	<td th:text="${boxes.boxposition}"></td>
-	 				<td th:text="${box.PositionsPoints.side} + ' ' + ${box.PositionsPoints.level} + ' ' + ${box.PositionsPoints.positionOnRack}"></td> -->
+<!--	 					<td th:text="${boxes.positions}"></td>-->
+	 				<!-- <td th:text="${box.Positions.side} + ' ' + ${box.Positions.level} + ' ' + ${box.Positions.positionOnRack}"></td> -->
 							<td>
 							<a th:href="@{/Boxes/editForm/{id}(id=${boxes.id})}" class="btn btn-primary ">Update</a>
 						&nbsp;&nbsp;

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.HCLProject.Aladino.Model.Boxes;
 import com.HCLProject.Aladino.Service.BoxesService;
 
 @Controller
@@ -168,12 +169,13 @@ private Box getAvailableBox(List<Box> boxes) {
 		    model.addAttribute("boxEnd", boxEnd);
 		    return "RackPositionsLayout";
 		}
-  
+
  	//1 - dimension of the Box is : 100*100*100
- 		
+
 		@GetMapping("/Place_Left_1")
 		@ResponseBody
-		public Map<String, String> Place_Left_1() {
+		public Map<String, String> Place_Left_1(Long id,Boxes boxes) {
+
 		    // Mark the box as occupied
 		    boxStatus.put("Box1", true);
 
@@ -186,20 +188,20 @@ private Box getAvailableBox(List<Box> boxes) {
 		    jsonResponse.put("rack", "Left_1");
 		    jsonResponse.put("message", response);
 
-		    return jsonResponse;
+		return jsonResponse;
 		}
-	
- 		/*       @GetMapping("/Place_Left_1")
+
+/*       @GetMapping("/Place_Left_1")
  		       @ResponseBody
  		       public String Place_Left_1() {
  		    	// Mark the box as occupied
  		    	  boxStatus.put("Box1", true);
- 		    
+
  		           return runPythonScript("python/PlaceLeft/S_Place_Left_1.py");
  		       }
 */
  	//2 - dimension of the Box is : 100*100*100
- 		       
+
  		       @GetMapping("/Place_Left_2")
  		       @ResponseBody
  		       public String Place_Left_2() {
@@ -207,7 +209,7 @@ private Box getAvailableBox(List<Box> boxes) {
  		           return runPythonScript("python/PlaceLeft/S_Place_Left_2.py");
  		       }
  	//3 - dimension of the Box is : 100*100*100
- 		       
+
  		       @GetMapping("/Place_Left_3")
  		       @ResponseBody
  		       public String Place_Left_3() {
@@ -215,7 +217,7 @@ private Box getAvailableBox(List<Box> boxes) {
  		           return runPythonScript("python/PlaceLeft/S_Place_Left_3.py");
  		       }
  	//4 - dimension of the Box is : 100*100*100
- 		       
+
  		       @GetMapping("/Place_Left_4")
  		       @ResponseBody
  		       public String Place_Left_4() {
@@ -276,7 +278,7 @@ private Box getAvailableBox(List<Box> boxes) {
  		   		           return runPythonScript("python/PlaceLeft/M_Place_Left_4.py");
  		   		       }
  		   	//5 - dimension of the Box is : 100*100*100
- 		   		       
+
  		   		       @GetMapping("/MidPlace_Left_5")
  		   		       @ResponseBody
  		   		       public String MidPlace_Left_5() {
@@ -284,20 +286,18 @@ private Box getAvailableBox(List<Box> boxes) {
  		   		           return runPythonScript("python/PlaceLeft/M_Place_Left_5.py");
  		   		       }
  		   	//6 - dimension of the Box is : 100*100*100
- 		   		       
+
  		   		       @GetMapping("/MidPlace_Left_6")
  		   		       @ResponseBody
  		   		       public String MidPlace_Left_6() {
  		   		    	boxMid.put("Box6", true);
  		   		           return runPythonScript("python/PlaceLeft/M_Place_Left_6.py");
  		   		       }
- 		   		       
- 		   		       
-	   		       
+
 // 	 ---------------------------    END   ---------------------------------------------------------
- 		   		 	 
+
  		   		 	//1 - dimension of the Box is : 100*100*100
- 		   		 		       
+
  		   		 		       @GetMapping("/EndPlace_Left_1")
  		   		 		       @ResponseBody
  		   		 		       public String EndPlace_Left_1() {
@@ -306,7 +306,7 @@ private Box getAvailableBox(List<Box> boxes) {
  		   		 		       }
 
  		   		 	//2 - dimension of the Box is : 100*100*100
- 		   		 		       
+
  		   		 		       @GetMapping("/EndPlace_Left_2")
  		   		 		       @ResponseBody
  		   		 		       public String EndPlace_Left_2() {

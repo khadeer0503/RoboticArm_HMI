@@ -38,41 +38,41 @@
 
 	<!--   <section class="pic d-flex justify-content-center align-items-center">   -->
 	<section>
-	
+
 	<!-- sidebar -->
 
 		<div class="sidebar mt-2">
 
 		<!--	<span onclick="toggleSidebar()" class="closebtn">
 			<i class="fas fa-times"></i></span>  -->
-			
+
 			<button onclick="goBack()" class=" p-2 mx-5 btn btn-primary btn-lg active"> Go Back </button>
     <script th:inline="javascript">
         function goBack() {
             window.history.back();
         }
     </script>
-			
+
 		<!--	<div class="divider"></div>     -->
 
 		</div>
-	
+
 		<div class="container">
 		<div align="center">
-		
+
 		<!--	<div class="row">
-			  	<div class="col-md-6 offset-md-3">
-				
+			<div class="col-md-6 offset-md-3">
+
 					<div class="my-card mt-2">
 			-->
-			
+
 				<form  th:action="@{/Positions/savePosition}" method="post"
-					th:object="${positionsPoints}">
+					th:object="${positions}">
 
 					<div>
 						<h1> Add new Boxes Position on a Rack</h1>
 					</div>
-					<!--  
+					<!--
 					<div class="col-md-8">
 						<label for="validationDefault01" class="col-sm-2 col-form-label">
 							ID</label>
@@ -87,64 +87,59 @@
 							Side</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="validationDefault01"
-						th:value="${positionsPoints.side}"
-						 name="side" 
-						 placeholder="Side positionPoints on a rack (left,right) " required>
-						 <!--  th:field="*{side}"  -->
+						name="side"
+						placeholder="Side positionPoints on a rack (left,right) " required>
+						<!--  th:field="*{side}" th:value="${positions.side}"  -->
 						</div>
 					</div>
-					
+
 					<div class="col-md-8">
 						<label for="validationDefault01" class="col-sm-2 col-form-label">
 							Level</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="validationDefault01"
-						th:value="${positionsPoints.level}" th:field="*{level}"
-						 name="level" 
-						 placeholder="Specify the Level ie.1,2,3...Shelf Height" required>
+						name="level"
+						placeholder="Specify the Level ie.1,2,3...Shelf Height" required>
+							<!--						th:value="${positions.level}" th:field="*{level}"-->
 						</div>
 					</div>
-					
-					
+
 					<div class="col-md-8">
 						<label for="validationDefault01" class="col-sm-2 col-form-label">
 							Position On Rack</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="validationDefault01"
-						th:value="${positionsPoints.positionOnRack}" th:field="*{positionOnRack}"
-						 name="positionOnRack" 
-						 placeholder="Position on a rack  " required>
+						name="placement"
+						placeholder="Position on a rack  " required>
+							<!--						th:value="${positions.placement}" th:field="*{placement}"-->
 						</div>
 					</div>
 
-					<div class="form-group form-check">
-							<input type="checkbox" id="isAvailable" name="isAvailable" th:checked="${positionsPoints.isAvailable}" /> 
+					<!-- <div class="form-group form-check">
+							<input type="checkbox" id="isAvailable" name="isAvailable" th:checked="${positions.isAvailable}" />
 							<lable for="isAvailable">Availablility</lable>
-						</div>
-					
-					
-				
-					
+						</div> -->
+
 					&nbsp
 					&nbsp
 					&nbsp
 				<!--	 Buttons field  -->
 						<div class="container text-center">
-						 	
-							 <button type="submit" class="btn bg-primary text-white">Submit</button>
-							 &nbsp
+
+							<button type="submit" class="btn bg-primary text-white">Submit</button>
+							&nbsp
 					&nbsp
 					&nbsp
-							 <button type="reset" class="btn btn-warning text-white ">Reset </button>
+							<button type="reset" class="btn btn-warning text-white ">Reset </button>
 						</div>
 
 				</form>
 
-				<!-- 
+				<!--
 						</div>
 					</div>
-				 -->
-				 
+				-->
+
 				</div>
 			</div>
 		</div>
