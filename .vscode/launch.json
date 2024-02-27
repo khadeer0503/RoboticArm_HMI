@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-AladinoApplication<Aladino>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.HCLProject.Aladino.AladinoApplication",
+            "projectName": "Aladino",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
