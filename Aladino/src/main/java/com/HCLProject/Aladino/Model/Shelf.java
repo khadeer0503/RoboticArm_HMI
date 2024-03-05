@@ -1,5 +1,7 @@
 package com.HCLProject.Aladino.Model;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 // import javax.persistence.*;
 import jakarta.persistence.*;
@@ -9,22 +11,26 @@ public class Shelf {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long sid;
     private String level;
+    private String ShelfNumber;
     @Column(name = "placement_on_a_Rack ")
     private String placement;
     @ManyToOne
     //@JsonIgnore
-    @JoinColumn(name = "rack_id")
+    //@JoinColumn(name="rack_id")
     private Rack rack;
-
+    @OneToMany(cascade = CascadeType.ALL,mappedBy= "shelf")
+    private List<Boxes>  boxes;
 
     public Shelf() {
     }
 
-    public Shelf(Long sid, String level, String placement, Rack rack) {
+    public Shelf(Long sid, String level, String shelfNumber, String placement, Rack rack, List<Boxes> boxes) {
         this.sid = sid;
         this.level = level;
+        ShelfNumber = shelfNumber;
         this.placement = placement;
         this.rack = rack;
+        this.boxes = boxes;
     }
 
     public Long getSid() {
@@ -43,6 +49,14 @@ public class Shelf {
         this.level = level;
     }
 
+    public String getShelfNumber() {
+        return ShelfNumber;
+    }
+
+    public void setShelfNumber(String shelfNumber) {
+        ShelfNumber = shelfNumber;
+    }
+
     public String getPlacement() {
         return placement;
     }
@@ -59,9 +73,20 @@ public class Shelf {
         this.rack = rack;
     }
 
+    public List<Boxes> getBoxes() {
+        return boxes;
+    }
+
+    public void setBoxes(List<Boxes> boxes) {
+        this.boxes = boxes;
+    }
+
     @Override
     public String toString() {
-        return "Shelf [sid=" + sid + ", level=" + level + ", placement=" + placement + ", rack=" + rack + "]";
+        return "Shelf [sid=" + sid + ", level=" + level + ", ShelfNumber=" + ShelfNumber + ", placement=" + placement
+                + ", rack=" + rack + ", boxes=" + boxes + "]";
     }
+
+
 
 }

@@ -51,7 +51,6 @@ public void setBoxesRepo(BoxesRepo boxesRepo) {		this.boxesRepo = boxesRepo;	}
 // Get All Boxes as a list method
 		@Override
 		public List<Boxes> getAllBoxes() {
-
 			return this.boxesRepo.findAll();
 		}
 

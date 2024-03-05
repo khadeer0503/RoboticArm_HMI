@@ -31,22 +31,17 @@
 <body>
 
 <!--   <section class="pic d-flex justify-content-center align-items-center">   -->
-	<section>
-		<div class="container">
-			<div align="center">
+<section>
+	<div class="container">
+		<div align="center">
 
-				<!-- 			<div class="image"> -->
-				<!-- 				<img src="/contact2.png" class="img-fluid" alt="..."> -->
-				<!-- 			</div> -->
+			<div class="mt-5">
+    		<h1>Robotic Arm</h1>
+			</div>
 
-				<div class="mt-5">
+			<div class="mt-3 mb-5">
 
-    <h1>Robotic Arm</h1>
-					</div>
-
-				<div class="mt-3 mb-5">
-
-					<div class="d-grid gap-2 col-6 mx-auto">
+				<div class="d-grid gap-2 col-8 mx-auto">
 
 					<a th:href="@{/pick}"
 					class=" p-2 btn btn-outline-danger " aria-current="page">PICK</a>
@@ -74,8 +69,8 @@
 									<div class="card-body d-grid gap-2">
 										<a th:href="@{/Boxes/getAll}"
 										class=" p-2 btn btn-outline-danger " aria-current="page">GET ALL THE BOXES</a>
-										<a th:href="@{/Positions/getAll}"
-										class=" p-2 btn btn-outline-primary " aria-current="page">GET ALL POSITIONS ON RACK</a>
+										<!-- <a th:href="@{/Positions/getAll}"
+										class=" p-2 btn btn-outline-primary " aria-current="page">GET ALL POSITIONS ON RACK</a> -->
 										<a th:href="@{/racks/}"
 										class=" p-2 btn btn-outline-warning " aria-current="page">GET ALL RACKS</a>
 										<a th:href="@{/shelf/}"
@@ -84,43 +79,11 @@
 								</div>
 							</div>
 						</div>
-					<!-- <div class="d-grid gap-2 "> -->
-
-
-
-	<!--
-					<a th:href="@{/Place/BoxMid}"
-					class=" p-2 btn btn-secondary active" aria-current="page">GET ALL MID-POSITIONS OCCUPIED</a>
-
-					<a th:href="@{/Place/BoxEnd}"
-					class=" p-2 btn btn-secondary active" aria-current="page">GET ALL END-POSITIONS OCCUPIED</a>
-
-				    <div class="d-grid gap-2 ">
-					<a th:href="@{/Boxes/getAll}"
-					class=" p-2 btn btn-success active" aria-current="page">GET ALL THE BOXES</a>
-
-					<a th:href="@{/Boxes/addBox}"
-					class=" p-2 btn btn-info active" aria-current="page">ADD THE BOXES</a>
-
-					<a th:href="@{/Positions/getAll}"
-					class=" p-2 btn btn-success active" aria-current="page">GET ALL POSITIONS ON RACK</a>
-
-				</div>
-
-				<a th:href="@{/update/{id}}">
-						<h2>Update the Boxes</h2>
-					</a>
-
-					<a th:href="@{/delete/{id}}">
-						<h2>Delete the Boxes</h2>
-					</a>
-
-	-->
 				</div>
 
 			</div>
 		</div>
-		</div>
+	</div>
 </section>
 
 </body>

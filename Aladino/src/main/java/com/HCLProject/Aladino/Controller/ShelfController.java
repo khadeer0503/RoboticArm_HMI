@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.HCLProject.Aladino.Model.Boxes;
 import com.HCLProject.Aladino.Model.Rack;
 import com.HCLProject.Aladino.Model.Shelf;
+import com.HCLProject.Aladino.Service.BoxesService;
 import com.HCLProject.Aladino.Service.RackService;
 import com.HCLProject.Aladino.Service.ShelfService;
 
@@ -25,6 +27,8 @@ public class ShelfController {
     private ShelfService shelfService;
     @Autowired
     private RackService rackService;
+    @Autowired
+    private BoxesService boxesService;
 
     //create
     @RequestMapping(value = "/create", method = RequestMethod.GET)
@@ -32,13 +36,18 @@ public class ShelfController {
         m.addAttribute("shelf", new Shelf());
         List<Rack> listRack = this.rackService.getAll();
         m.addAttribute("listRack", listRack);
+        List<Boxes> boxes = this.boxesService.getAllBoxes();
+        m.addAttribute("boxes", boxes);
         m.addAttribute("title","Robotic Arm");
         return "Shelf/addShelf";
     }
 //Handling save
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(@ModelAttribute Shelf shelf, Model m) {
+    public String save(@ModelAttribute Shelf shelf, Model m,
+            @RequestParam("boxes") List<Boxes> boxes) {
         m.addAttribute("title","Robotic Arm");
+
+        // shelf.setBoxes(boxes);
         Shelf saveshelf = this.shelfService.creatShelfs(shelf);
         m.addAttribute("shelf", saveshelf);
         return "redirect:/shelf/";

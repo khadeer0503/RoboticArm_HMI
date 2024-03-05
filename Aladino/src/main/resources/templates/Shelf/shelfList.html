@@ -28,7 +28,7 @@
 <body>
 
 	<!--   <section class="pic d-flex justify-content-center align-items-center">   -->
-    <section class="pic d-flex justify-content-center align-items-center bg-light ">
+    <section class="pic d-flex justify-content-center align-items-center bg-light mb-5">
 
         <div class="container">
             <div align="center">
@@ -43,9 +43,12 @@
                         <thead class="table-dark">
                         <tr>
                             <div class="d-flex align-items-center">
-                                <th>Shelf ID</th>
+                                <!-- <th ># ID</th> -->
                                 <th>Shelf Level</th>
+                                <th>Shelf shelfNumber</th>
                                 <th>Shelf Placement</th>
+                                <th>Rack ID</th>
+                                <th>Box ID</th>
                                 <th>Action</th>
                             </div>
                         </tr>
@@ -53,10 +56,13 @@
 
                         <tbody>
                         <tr  th:each="list : ${listShelf}">
-                            <td  th:text="${list.sid}"></td>
+                            <td  th:text="${list.sid}" hidden></td>
                             <td th:text="${list.level}">Shelf Level</td>
+                            <td th:text="${list.shelfNumber}">Shelf Number</td>
                             <td th:text="${list.placement}">Shelf Placement on a rack</td>
                             <!-- <td th:text="${list.rack.rid}"></td> -->
+                            <td th:text="${list.rack != null ? list.rack.rid : 'N/A'}"></td>
+                            <td th:text="${list.boxes!= null} ? list.boxes.id : 'N/A'}"></td>
 
                             <div class="d-flex align-items-center">
                                 <td>

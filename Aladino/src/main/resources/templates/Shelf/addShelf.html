@@ -13,10 +13,10 @@
 
 <body>
 <section class="pic d-flex justify-content-center align-items-center bg-light ">
-    <div class="container">
+    <div class="container mb-5">
         <div align="center">
 
-            <div class="card border-success mb-3" style="margin-top: 80px;">
+            <div class="card border-success mb-3" style="margin-top: 80px;margin-bottom:50px;">
                 <div class="row g-0">
                     <div class="col-md-3 bg-dark" style="border-right: 8px solid #121212;">
                         <!--left side bg -->
@@ -40,6 +40,14 @@
                                         th:field="*{level}" name="level" placeholder="Shelf Level " th:value="${shelf.level}" required >
                                 </div>
 
+                                <!--  Shelf shelfNumber -->
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default"> Shelf Number</span>
+                                    <input type="text" class="form-control" aria-label="Sizing example input"
+                                        aria-describedby="inputGroup-sizing-default" id="validationDefault01"
+                                        th:field="*{shelfNumber}" name="shelfNumber" placeholder="shelf serial Number " th:value="${shelf.shelfNumber}" required >
+                                </div>
+
                                 <!--  Shelf Placement -->
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default"> Shelf Placement</span>
@@ -56,6 +64,19 @@
 											name="rack"   required>
 											<th:block th:each="list : ${listRack}">
 												<option th:text="${list.rid}" th:value="${list.rid}"></option>
+											</th:block>
+										</select>
+
+									</div>
+
+                                    <!-- Box details -->
+
+									<div class="input-group mb-3">
+										<span class="input-group-text">Boxes </span>
+										<select th:field="*{boxes}" class="form-select " aria-label="Default select example"
+											name="boxes"   required>
+											<th:block th:each="list : ${boxes}">
+												<option th:text="${list.id}" th:value="${list.id}"></option>
 											</th:block>
 										</select>
 
