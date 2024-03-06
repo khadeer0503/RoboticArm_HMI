@@ -16,7 +16,8 @@ public class Boxes {
 	private String name;
 	private String dimension;
 	private String weight;
-	@ManyToOne( fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne
+	@JoinColumn(name = "shelf_Id")
 	private Shelf shelf;
 	//private Positions positions;
 
@@ -72,4 +73,14 @@ public class Boxes {
 		this.shelf = shelf;
 	}
 
+	@Override
+	public String toString() {
+		return "Boxes{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", dimension='" + dimension + '\'' +
+				", weight='" + weight + '\'' +
+				", shelf=" + shelf +
+				'}';
+	}
 }

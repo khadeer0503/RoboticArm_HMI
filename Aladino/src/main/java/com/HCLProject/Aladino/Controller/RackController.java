@@ -41,10 +41,11 @@ public class RackController {
 
  //Handling add Request of the department
     @PostMapping("/saveRack")
-    public String saveRack(@ModelAttribute Rack rack,Model m){
+    public String saveRack(@ModelAttribute Rack rack,Model m,RedirectAttributes ra){
         Rack newRack = this.rackService.createRack(rack);
         m.addAttribute("rack",newRack);
         m.addAttribute("title","Robotic Arm");
+        ra.addFlashAttribute("message","Rack is successfully Added");
         return "redirect:/racks/";
     }
 

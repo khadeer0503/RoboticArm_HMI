@@ -36,101 +36,74 @@
 </head>
 <body>
 
-	<!--   <section class="pic d-flex justify-content-center align-items-center">   -->
-	<section>
-		<div class="container">
-		<div align="center">
-		
-		<!--  	<div class="row">
-				<div class="col-md-6 offset-md-3">
-				
-					<div class="my-card mt-2">
-				<form  th:action="@{/Boxes/saveAddedBox}" method="post"
-					th:object="${boxes}">
-				
-			-->		
-					<form  th:action="@{/Boxes/updatedBox}" method="Post"
-					th:object="${updatedBox}">
-					<div>
-						<h1>Edit/Update a New Box</h1>
-					</div>
-					
-					<!-- 
-					th:field="*{id}"
-					th:field="*{name}" 
-					th:field="*{dimension}" 
-					th:field="*{weight}"
-					th:field="*{boxposition}"
-					 -->
-					<div class="col-md-8">
-						<label for="validationDefault01" class="col-sm-2 col-form-label">
-							Box Id</label>
-						<div class="col-sm-10">
-							<input type="number" class="form-control" id="validationDefault01"
-								 name="id" placeholder="Enter the Box ID" readonly="readonly" >
-								
-								 
-						</div>
-					</div>
-				
-									
-					<div class="col-md-8">
-						<label for="validationDefault01" class="col-sm-2 col-form-label">
-							Name</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="validationDefault01"
-							 name="name" placeholder="Box identity name as small,medium,large " required>
-						</div>
-					</div>
+	<section class="pic d-flex justify-content-center align-items-center bg-light ">
+		<div class="container mb-5">
+			<div align="center">
 
-					<div class="col-md-8 ">
-						<label for="validationDefault01" class="col-sm-2 col-form-label">Dimension</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="validationDefault01"
-							 	name="dimension" placeholder="dimension of a box " required>
+				<div class="card border-success mb-3" style="margin-top: 80px;margin-bottom:50px;">
+					<div class="row g-0">
+						<div class="col-md-3 bg-dark" style="border-right: 8px solid #121212;">
+							<!--left side bg -->
+							<div class="backbtn mt-5" >
+								<a href="/Boxes/getAll" <span> <i class="fa-solid fa-circle-left"></i> </span>Back to Lists</a>
+							</div>
+						</div>
+						<div class="col-md-8">
+							<div class="card-header bg-transparent border-success">
+								<h4>Edit/Update a New Box</h4>
+							</div>
+							<div class="card-body">
+
+					<form  th:action="@{/Boxes/updatedBox/{id}(id=${boxes.id})}" method="post"
+					th:object="${boxes}">
+
+					<div class="input-group mb-3">
+						<span class="input-group-text" id="inputGroup-sizing-default"> Box ID </span>
+						<input type="text" class="form-control" aria-label="Sizing example input"
+							aria-describedby="inputGroup-sizing-default" id="validationDefault01"
+							th:value="${boxes.id}" 	th:field="*{id}"	name="id" placeholder="Enter the Box ID" readonly="readonly" >
 						</div>
 					</div>
-					
-					
-					<div class="col-md-8">
-						<label for="validationDefault01" class="col-sm-2 col-form-label">
-							Weight</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="validationDefault01"
-						  name="weight" placeholder="weight of a box " required>
-						</div>
-					</div>
-					
-				<!-- 	
-					<div class="col-md-8">
-						<label for="validationDefault01" class="col-sm-2 col-form-label">
-							Box position</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="validationDefault01"
-							  name="boxposition" placeholder="position of a box in pallet ie. layer 1,2,3... " required>
-							  <!--   th:value="${boxes.boxposition}" th:field="*{boxposition}"
-						 </div>
-					  </div>  
-			 -->
-					
-					<div class="col-8 m-5">
-						<button class="btn btn-primary" type="submit">Add to
-							Submit</button>
-					</div>
+		<!--   name -->
+		<div class="input-group mb-3">
+			<span class="input-group-text" id="inputGroup-sizing-default"> Name </span>
+			<input type="text" class="form-control" aria-label="Sizing example input"
+				aria-describedby="inputGroup-sizing-default" id="validationDefault01"  th:field="*{name}"
+				name="name" placeholder="Box identity name as small,medium,large " required>
+				<!-- th:value="${boxes.name}" th:field="*{name}" -->
+		</div>
+		<!--   Dimension -->
+		<div class="input-group mb-3">
+			<span class="input-group-text" id="inputGroup-sizing-default"> Dimension</span>
+			<input type="text" class="form-control" aria-label="Sizing example input"
+				aria-describedby="inputGroup-sizing-default" id="validationDefault01"
+				name="dimension" placeholder="dimension of a box " required>
+				<!-- th:value="${boxes.dimension}" 	th:field="*{dimension}" -->
+		</div>
+
+		<!--   Weight -->
+		<div class="input-group mb-3">
+			<span class="input-group-text" id="inputGroup-sizing-default"> Weight</span>
+			<input type="text" class="form-control" aria-label="Sizing example input"
+				aria-describedby="inputGroup-sizing-default" id="validationDefault01"
+				name="weight" placeholder="weight of a box " required>
+				<!-- th:value="${boxes.weight}" 	th:field="*{weight}" -->
+		</div>
+
+		<div class="card-footer bg-transparent  d-grid gap-2 m-25"
+		style="max-width: 100%;margin-top: 50px;">
+<button class="btn btn-success " type="submit">Update</button>
+</div>
 
 				</form>
 
-
-				<!-- 
-					</div>
-				</div>
-				 -->
 			</div>
 		</div>
-
-	</section>
-
+	</div>
+	</div>
+</div>
+</div>
+</div>
+</section>
 </body>
 </html>
-
-

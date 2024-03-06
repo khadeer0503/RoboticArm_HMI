@@ -32,10 +32,11 @@
 
         <div class="container">
             <div align="center">
-                <div class="body-text" style="margin-top: 50px;">
+                <div class="body-text" style="margin-top: 20px;">
                     <div class="AddRack">
                         <span><a th:href="@{/racks/addRack}" class="btn btn-outline-success "><i class="fas fa-user-plus"></i>	Add Rack</a></span>
                         &nbsp;
+						<button onclick="location.reload()" class="btn btn-outline-primary" type="button">Refresh Table</button>
                     </div>
 
                     <!-- Search functionality -->
@@ -55,13 +56,19 @@
 
                     <table class="table table-striped mt-5">
 
+                <!-- 	//success message -->
+
+                <div th:if="${message}"  class="alert alert-success text-center mt-2">
+                    [[${message}]]
+                    </div>
+
                         <thead class="table-dark">
                         <tr>
                             <div class="d-flex align-items-center">
-                                <th>Rack ID</th>
+                                <th><i class="fas fa-key"></i> RACK ID</th>
                                 <th>Rack Name</th>
                                 <th>Rack Side</th>
-                                <th>Action</th>
+                                <th><i class="fas fa-exclamation-triangle"></i> Action</th>
                             </div>
                         </tr>
                         </thead>

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.HCLProject.Aladino.Model.Boxes;
 import com.HCLProject.Aladino.Model.Rack;
@@ -33,23 +34,22 @@ public class ShelfController {
     //create
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String create(Model m) {
-        m.addAttribute("shelf", new Shelf());
+
         List<Rack> listRack = this.rackService.getAll();
         m.addAttribute("listRack", listRack);
-        List<Boxes> boxes = this.boxesService.getAllBoxes();
-        m.addAttribute("boxes", boxes);
+        List<Boxes> listBoxes = this.boxesService.getAllBoxes();
+        m.addAttribute("listBoxes", listBoxes);
+        m.addAttribute("shelf", new Shelf());
         m.addAttribute("title","Robotic Arm");
         return "Shelf/addShelf";
     }
 //Handling save
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(@ModelAttribute Shelf shelf, Model m,
-            @RequestParam("boxes") List<Boxes> boxes) {
+    public String save(@ModelAttribute("shelf") Shelf shelf, Model m,RedirectAttributes ra,@RequestParam("boxes") String boxes){
         m.addAttribute("title","Robotic Arm");
-
-        // shelf.setBoxes(boxes);
         Shelf saveshelf = this.shelfService.creatShelfs(shelf);
         m.addAttribute("shelf", saveshelf);
+        ra.addFlashAttribute("message","Shelf is successfully Added");
         return "redirect:/shelf/";
     }
 
@@ -75,9 +75,10 @@ public class ShelfController {
 
     //delete
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-    public String delete(@PathVariable Long id,Model m) {
-        this.rackService.deleteRack(id);
+    public String delete(@PathVariable Long id,Model m,RedirectAttributes ra) {
+        this.shelfService.deleteById(id);
         m.addAttribute("title","Robotic Arm");
+        ra.addFlashAttribute("message","Deleted is successfully Added");
         return "redirect:/shelf/";
     }
 

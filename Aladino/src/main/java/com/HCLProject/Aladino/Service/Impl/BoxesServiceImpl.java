@@ -45,7 +45,6 @@ public void setBoxesRepo(BoxesRepo boxesRepo) {		this.boxesRepo = boxesRepo;	}
 		@Override
 		public void deleteBoxesById(Long id) {
 			this.boxesRepo.deleteById(id);
-
 		}
 
 // Get All Boxes as a list method

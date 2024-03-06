@@ -32,37 +32,44 @@
 
         <div class="container">
             <div align="center">
-                <div class="body-text" style="margin-top: 50px;">
+                <div class="body-text" style="margin-top: 20px;">
                     <div class="AddRack">
                         <span><a th:href="@{/shelf/create}" class="btn btn-outline-success "><i class="fas fa-user-plus"></i>	Add Shelf</a></span>
                         &nbsp;
+						<button onclick="location.reload()" class="btn btn-outline-primary" type="button">Refresh Table</button>
                     </div>
 
                     <table class="table table-striped mt-5">
+            <!-- 	//success message -->
 
+            <div th:if="${message}"  class="alert alert-success text-center mt-2">
+                [[${message}]]
+                </div>
                         <thead class="table-dark">
                         <tr>
                             <div class="d-flex align-items-center">
-                                <!-- <th ># ID</th> -->
+                                <th ><i class="fas fa-key"></i> SHELF ID</th>
                                 <th>Shelf Level</th>
                                 <th>Shelf shelfNumber</th>
                                 <th>Shelf Placement</th>
-                                <th>Rack ID</th>
-                                <th>Box ID</th>
-                                <th>Action</th>
+                                <th><i class="fas fa-key"></i> RACK ID</th>
+                                <!-- <th><i class="fas fa-key"></i> BOX ID</th> -->
+                                <th><i class="fas fa-exclamation-triangle"></i> Action</th>
                             </div>
                         </tr>
                         </thead>
 
                         <tbody>
                         <tr  th:each="list : ${listShelf}">
-                            <td  th:text="${list.sid}" hidden></td>
+                            <td  th:text="${list.sid}" ></td>
                             <td th:text="${list.level}">Shelf Level</td>
                             <td th:text="${list.shelfNumber}">Shelf Number</td>
                             <td th:text="${list.placement}">Shelf Placement on a rack</td>
                             <!-- <td th:text="${list.rack.rid}"></td> -->
                             <td th:text="${list.rack != null ? list.rack.rid : 'N/A'}"></td>
-                            <td th:text="${list.boxes!= null} ? list.boxes.id : 'N/A'}"></td>
+                            <!-- <td>[[${list.rack.name}]]</td> -->
+                            <!-- <td th:text="${list.boxes.id}"></td> -->
+                            <!-- <td th:text="${list.boxes != null ? list.boxes.id : 'N/A'}"></td> -->
 
                             <div class="d-flex align-items-center">
                                 <td>

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ShelfServiceImpl implements ShelfService {
@@ -28,4 +29,7 @@ public class ShelfServiceImpl implements ShelfService {
     public List<Shelf> getAllShelfs() {
         return this.shelfRepo.findAll();
     }
+
+    @Override
+    public void deleteById(Long id) { this.shelfRepo.deleteById(id);    }
 }

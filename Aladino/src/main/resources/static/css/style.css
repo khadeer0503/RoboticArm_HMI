@@ -1,6 +1,6 @@
 body{
   zoom: 90%;
-  background-image: radial-gradient(to right, #DEE4EA , #378B29);
+  background-image: radial-gradient(to right, #d6d7d9 , #378B29);
 }
 
 .text
@@ -37,7 +37,7 @@ background-color:  rgb(255, 255, 255)
 .fa, .fas {
   font-weight: 900;
   color: #E91E63;
-  margin-left: 150px !important;
+ /* margin-left: 150px !important;*/
   visibility: visible;
 }
 

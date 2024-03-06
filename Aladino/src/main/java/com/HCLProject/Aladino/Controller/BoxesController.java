@@ -2,6 +2,8 @@ package com.HCLProject.Aladino.Controller;
 
 import java.util.List;
 
+import com.HCLProject.Aladino.Model.Shelf;
+import com.HCLProject.Aladino.Service.ShelfService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +27,13 @@ public class BoxesController {
 
 @Autowired
 	private BoxesService boxesService;
+@Autowired
+private ShelfService shelfService;
+
+	public ShelfService getShelfService() {		return shelfService;	}
+
+	public void setShelfService(ShelfService shelfService) {		this.shelfService = shelfService;	}
+
 	//getter boxes Service
 	public BoxesService getBoxesService() {
 		return boxesService;
@@ -60,7 +69,9 @@ public class BoxesController {
 		public String addBox(Model m)
 		{
     		m.addAttribute("title","HCL Aladino_Add");
-    		m.addAttribute("boxes", new Boxes());
+			List<Shelf> listShelf = this.shelfService.getAllShelfs();
+			m.addAttribute("listShelf", listShelf);
+			m.addAttribute("boxes", new Boxes());
 			return "addBox";
 		} 
 
@@ -104,9 +115,9 @@ public class BoxesController {
 
 		}
 
-//@PostMapping("/updatedBox/{id}")
-		@RequestMapping(value="/updatedBox/{id}",method = {RequestMethod.PUT ,RequestMethod.POST,RequestMethod.GET })
-		public String updateBox(@PathVariable Long id, @ModelAttribute Boxes boxes, Model model) throws BoxNotFoundException {
+@PostMapping("/updatedBox/{id}")
+		//@RequestMapping(value="/updatedBox/{id}",method = {RequestMethod.PUT ,RequestMethod.POST,RequestMethod.GET })
+		public String updateBox(@PathVariable Long id, @ModelAttribute Boxes boxes, Model model,RedirectAttributes ra) throws BoxNotFoundException {
 			Boxes existingBox = boxesService.findbyId(id);
 			//.orElseThrow(() -> new IllegalArgumentException("Invalid box id:" + id));
 			existingBox.setDimension(boxes.getDimension());
@@ -123,9 +134,10 @@ public class BoxesController {
 //delete by id
 //@DeleteMapping("/delete/{id}")
 		@RequestMapping(value="/delete/{id}",method = {RequestMethod.DELETE,RequestMethod.GET })
-		public String  delete(@PathVariable("id") Long id)
+		public String  delete(@PathVariable("id") Long id,RedirectAttributes ra)
 		{
 			this.boxesService.deleteBoxesById(id);
+			ra.addFlashAttribute("message","Box successfully deleted");
 			return "redirect:/Boxes/getAll";
 		}
 

@@ -75,7 +75,7 @@
 										<span class="input-group-text">Boxes </span>
 										<select th:field="*{boxes}" class="form-select " aria-label="Default select example"
 											name="boxes"   required>
-											<th:block th:each="list : ${boxes}">
+											<th:block th:each="list : ${listBoxes}">
 												<option th:text="${list.id}" th:value="${list.id}"></option>
 											</th:block>
 										</select>

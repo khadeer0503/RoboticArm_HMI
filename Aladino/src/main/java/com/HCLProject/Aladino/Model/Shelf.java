@@ -1,5 +1,6 @@
 package com.HCLProject.Aladino.Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -15,11 +16,9 @@ public class Shelf {
     @Column(name = "placement_on_a_Rack ")
     private String placement;
     @ManyToOne
-    //@JsonIgnore
-    //@JoinColumn(name="rack_id")
     private Rack rack;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy= "shelf")
-    private List<Boxes>  boxes;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy= "shelf") //mappedBy should be here only
+    private List<Boxes>  boxes= new ArrayList<>();
 
     public Shelf() {
     }

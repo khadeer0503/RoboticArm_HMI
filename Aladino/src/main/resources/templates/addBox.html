@@ -35,24 +35,27 @@
 <title>Add New Box</title>
 </head>
 <body>
+	<section class="pic d-flex justify-content-center align-items-center bg-light ">
+		<div class="container mb-5">
+			<div align="center">
 
-	<!--   <section class="pic d-flex justify-content-center align-items-center">   -->
-	<section>
-		<div class="container">
-		<div align="center">
-
-		<!--	<div class="row">
-			<div class="col-md-6 offset-md-3">
-
-					<div class="my-card mt-2">
-			-->
+				<div class="card border-success mb-3" style="margin-top: 80px;margin-bottom:50px;">
+					<div class="row g-0">
+						<div class="col-md-3 bg-dark" style="border-right: 8px solid #121212;">
+							<!--left side bg -->
+							<div class="backbtn mt-5" >
+								<a href="/Boxes/getAll" <span> <i class="fa-solid fa-circle-left"></i> </span>Back to Lists</a>
+							</div>
+						</div>
+						<div class="col-md-8">
+							<div class="card-header bg-transparent border-success">
+								<h4 th:if="${boxes.id == null}">Add a New Box</h4>
+								<h4 th:unless="${boxes.id == null}">Edit a New Box</h4>
+							</div>
+							<div class="card-body">
 
 				<form  th:action="@{/Boxes/saveAddedBox}" method="post"
-					th:object="${boxes}">
-
-					<div>
-						<h1>Add a New Box</h1>
-					</div>
+					th:object="${boxes}"  class="mt-2">
 					<!--
 					<div class="col-md-8">
 						<label for="validationDefault01" class="col-sm-2 col-form-label">
@@ -63,70 +66,59 @@
 						</div>
 					</div>
 					-->
-
-					<div class="col-md-8">
-						<label for="validationDefault01" class="col-sm-2 col-form-label">
-							Name</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="validationDefault01"
+					<input type="hidden" th:field="*{id}" th:value="${boxes.id}" />
+					<!--   name -->
+					<div class="input-group mb-3">
+						<span class="input-group-text" id="inputGroup-sizing-default"> Name </span>
+						<input type="text" class="form-control" aria-label="Sizing example input"
+							aria-describedby="inputGroup-sizing-default" id="validationDefault01"
 							th:value="${boxes.name}" 	th:field="*{name}" name="name" placeholder="Box identity name as small,medium,large " required>
-						</div>
 					</div>
-
-					<div class="col-md-8 ">
-						<label for="validationDefault01" class="col-sm-2 col-form-label">
-						Dimension</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="validationDefault01"
+					<!--   Dimension -->
+					<div class="input-group mb-3">
+						<span class="input-group-text" id="inputGroup-sizing-default"> Dimension</span>
+						<input type="text" class="form-control" aria-label="Sizing example input"
+							aria-describedby="inputGroup-sizing-default" id="validationDefault01"
 							th:value="${boxes.dimension}" 	th:field="*{dimension}" name="dimension" placeholder="dimension of a box " required>
-						</div>
 					</div>
 
-					<div class="col-md-8">
-						<label for="validationDefault01" class="col-sm-2 col-form-label">
-							Weight</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="validationDefault01"
+					<!--   Weight -->
+					<div class="input-group mb-3">
+						<span class="input-group-text" id="inputGroup-sizing-default"> Weight</span>
+						<input type="text" class="form-control" aria-label="Sizing example input"
+							aria-describedby="inputGroup-sizing-default" id="validationDefault01"
 							th:value="${boxes.weight}" 	th:field="*{weight}" name="weight" placeholder="weight of a box " required>
-						</div>
 					</div>
 
 
-					<!-- <div class="col-md-8">
-						<label for="validationDefault01" class="col-sm-2 col-form-label">
-							Box Position on Rack</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="validationDefault01"
-							th:value="${boxes.positionsPoints}" 	th:field="*{positionsPoints}" name="positionsPoints"  required>
-						</div>
+					<!-- Shelf details -->
 
-						</div> -->
+					<div class="input-group mb-3">
+						<span class="input-group-text">Add To Shelf </span>
+						<select th:field="*{shelf}" class="form-select " aria-label="Default select example"
+								name="shelf"   required>
+							<th:block th:each="list : ${listShelf}">
+								<option th:text="${list.sid}" th:value="${list.sid}"></option>
+							</th:block>
+						</select>
 
-					&nbsp
-					&nbsp
-					&nbsp
-				<!--	 Buttons field  -->
-						<div class="container text-center">
+					</div>
 
-							<button type="submit" class="btn bg-primary text-white">Submit</button>
-							&nbsp
-					&nbsp
-					&nbsp
-							<button type="reset" class="btn btn-warning text-white ">Reset </button>
-						</div>
+					<div class="card-footer bg-transparent  d-grid gap-2 m-25"
+                                style="max-width: 100%;margin-top: 50px;">
+                        <button class="btn btn-success " type="submit">ADD BOX</button>
+                    </div>
 
 				</form>
 
-				<!--
-						</div>
-					</div>
-				-->
-
-				</div>
 			</div>
 		</div>
-
-	</section>
+	</div>
+	</div>
+</div>
+</div>
+</div>
+</section>
 
 </body>
 </html>
