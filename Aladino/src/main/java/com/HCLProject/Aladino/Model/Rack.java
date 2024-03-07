@@ -13,17 +13,21 @@ public class Rack {
     private String name;
     private String side;
 
-    @OneToMany(mappedBy = "rack",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+@OneToMany(mappedBy = "rack",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Shelf> shelfs= new ArrayList<>();
+
+@OneToMany(mappedBy = "rack",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<Positions> positions= new ArrayList<>();
 
     public Rack() {
     }
 
-    public Rack(Long rid, String name, String side, List<Shelf> shelfs) {
+    public Rack(Long rid, String name, String side, List<Shelf> shelfs, List<Positions> positions) {
         this.rid = rid;
         this.name = name;
         this.side = side;
         this.shelfs = shelfs;
+        this.positions = positions;
     }
 
     public Long getRid() {
@@ -58,13 +62,14 @@ public class Rack {
         this.shelfs = shelfs;
     }
 
-    @Override
-    public String toString() {
-        return "Rack{" +
-                "rid=" + rid +
-                ", name='" + name + '\'' +
-                ", side='" + side + '\'' +
-                ", shelfs=" + shelfs +
-                '}';
+    public List<Positions> getPositions() {
+        return positions;
     }
+
+    public void setPositions(List<Positions> positions) {
+        this.positions = positions;
+    }
+
+
+
 }

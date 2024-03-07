@@ -9,4 +9,5 @@ public interface ShelfService {
     Shelf getShelfsById(Long id);
     List<Shelf> getAllShelfs();
     void deleteById(Long id);
+
 }

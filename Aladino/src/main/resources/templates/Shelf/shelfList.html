@@ -50,8 +50,8 @@
                             <div class="d-flex align-items-center">
                                 <th ><i class="fas fa-key"></i> SHELF ID</th>
                                 <th>Shelf Level</th>
-                                <th>Shelf shelfNumber</th>
-                                <th>Shelf Placement</th>
+                                <th>Shelf Name</th>
+                                <th>Shelf Position</th>
                                 <th><i class="fas fa-key"></i> RACK ID</th>
                                 <!-- <th><i class="fas fa-key"></i> BOX ID</th> -->
                                 <th><i class="fas fa-exclamation-triangle"></i> Action</th>
@@ -63,8 +63,8 @@
                         <tr  th:each="list : ${listShelf}">
                             <td  th:text="${list.sid}" ></td>
                             <td th:text="${list.level}">Shelf Level</td>
-                            <td th:text="${list.shelfNumber}">Shelf Number</td>
-                            <td th:text="${list.placement}">Shelf Placement on a rack</td>
+                            <td th:text="${list.shelfNumber}">Shelf Name</td>
+                            <td th:text="${list.placement}">Position on a shelf</td>
                             <!-- <td th:text="${list.rack.rid}"></td> -->
                             <td th:text="${list.rack != null ? list.rack.rid : 'N/A'}"></td>
                             <!-- <td>[[${list.rack.name}]]</td> -->

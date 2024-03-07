@@ -18,6 +18,7 @@ public class PositionsServiceImpl  implements PositionsService{
 	private PositionsRepo positionsRepo;
 
 //create
+	@SuppressWarnings("null")
 	public Positions createPosition(Positions positions) {
 
 		return this.positionsRepo.save(positions);
@@ -25,18 +26,14 @@ public class PositionsServiceImpl  implements PositionsService{
 
 //	delete
 	public void deletePosition(Long id) throws PositionNotFoundException {
-		if(positionsRepo.findById(id) != null)
-			{
 		this.positionsRepo.deleteById(id);
-			}else {
-				throw new PositionNotFoundException(id);
-			}
 
 	}
 
 //get single
 	public Positions getSinglePosition(Long id) throws PositionNotFoundException {
 
+		@SuppressWarnings("null")
 		Optional<Positions> findById = this.positionsRepo.findById(id);
 		if(findById.isPresent())
 			{
@@ -56,40 +53,18 @@ public class PositionsServiceImpl  implements PositionsService{
 	@Override
 	public Positions updatePosition(Positions positions, Long id) throws PositionNotFoundException, PositionAlreadyFullException
 		{
+		@SuppressWarnings("null")
 		Optional<Positions> findById = positionsRepo.findById(id);
         if (findById.isPresent()) {
-            Positions existingPositionPoint = findById.get();
-//           	existingPositionPoint.setX(positionPoints.getX());
-//            existingPositionPoint.setY(positionPoints.getY());
-//            existingPositionPoint.setZ(positionPoints.getZ());
-            existingPositionPoint=positions;
+            Positions existingPosition = findById.get();
+            existingPosition=positions;
             return positionsRepo.save(positions);
         } else {
             throw new PositionNotFoundException(id);
         }
 }
 
-	@Override
-	public void updateposition(String positionOnRack) throws PositionNotFoundException, PositionAlreadyFullException {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'updateposition'");
-	}
 }
 
-	/*	//Positions update = this.positionPointsRepo.save(positionPoints);
-		if(positionPoints.getIsAvailable())
-			{
-				throw new PositionNotFoundException(" Position is Empty on Rack" + positionPoints);
-			}
-		String positionOnRack = positionPoints.getPositionOnRack();
-		if(positionOnRack.isEmpty())
-			{
-				throw new  PositionAlreadyFullException("Position already full: " + positionOnRack);
-			}
-		positionPoints.setIsAvailable(true);
-		positionPointsRepo.save(positionPoints);
-
-	}
-	*/
 
 
