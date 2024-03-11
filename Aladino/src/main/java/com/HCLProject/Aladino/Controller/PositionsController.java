@@ -142,20 +142,20 @@ public class PositionsController {
 	//         }
 	//     }
 
-	@PutMapping("/{positionOnRack}")
-	  public ResponseEntity<String> updatePosition(@PathVariable String positionOnRack) {
-	    try {
-	      positionPointsService.updateposition(positionOnRack);
-	      return ResponseEntity.ok("positionOnRack " + positionOnRack + " is now full");
-
-	    } catch (PositionNotFoundException e) {
-	      return ResponseEntity.notFound().build();
-
-	    } catch (PositionAlreadyFullException e) {
-	      return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
-
-	    }
-	  }
+//	@PutMapping("/{positionOnRack}")
+//	  public ResponseEntity<String> updatePosition(@PathVariable String positionOnRack) {
+//	    try {
+//	      positionPointsService.updateposition(positionOnRack);
+//	      return ResponseEntity.ok("positionOnRack " + positionOnRack + " is now full");
+//
+//	    } catch (PositionNotFoundException e) {
+//	      return ResponseEntity.notFound().build();
+//
+//	    } catch (PositionAlreadyFullException e) {
+//	      return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+//
+//	    }
+//	  }
 
 	}
 	//In this implementation, we use ResponseEntity to provide more control over the HTTP response.
