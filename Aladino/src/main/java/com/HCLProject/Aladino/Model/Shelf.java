@@ -6,44 +6,30 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 // import javax.persistence.*;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
-
 @Entity
 public class Shelf {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long sid;
-    @Max(value=5, message = "Shelf level should be less then then equal to 5")
-    @Min(value = 1, message = "Shelf level should be at-least 1")
-    private Integer level;
+    private String level;
     private String ShelfNumber;
-    @Column(name = "position on a Shelf ")
-    @Max(value=5, message = "Shelf placement position should be less then then equal to 5")
-    @Min(value = 1, message = "Shelf placement position should be at-least 1")
-    private Integer placement;
-@ManyToOne
+    @Column(name = "placement_on_a_Rack ")
+    private String placement;
+    @ManyToOne
     private Rack rack;
-@OneToMany(mappedBy = "shelf",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private List<Positions> positions= new ArrayList<>();
-    // @OneToMany(cascade = CascadeType.ALL,mappedBy= "shelf") //mappedBy should be here only
-    // private List<Boxes>  boxes= new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL,mappedBy= "shelf") //mappedBy should be here only
+    private List<Boxes>  boxes= new ArrayList<>();
 
     public Shelf() {
     }
 
-    public Shelf(Long sid, @Max(value = 5, message = "Shelf level should be less then then equal to 5") Integer level,
-            String shelfNumber,
-            @Max(value = 5, message = "Shelf placement should be less then then equal to 5") Integer placement,
-            Rack rack, List<Positions> positions) {
+    public Shelf(Long sid, String level, String shelfNumber, String placement, Rack rack, List<Boxes> boxes) {
         this.sid = sid;
         this.level = level;
-        this.ShelfNumber = shelfNumber;
+        ShelfNumber = shelfNumber;
         this.placement = placement;
         this.rack = rack;
-        this.positions = positions;
+        this.boxes = boxes;
     }
 
     public Long getSid() {
@@ -54,11 +40,11 @@ public class Shelf {
         this.sid = sid;
     }
 
-    public Integer getLevel() {
+    public String getLevel() {
         return level;
     }
 
-    public void setLevel(Integer level) {
+    public void setLevel(String level) {
         this.level = level;
     }
 
@@ -70,11 +56,11 @@ public class Shelf {
         ShelfNumber = shelfNumber;
     }
 
-    public Integer getPlacement() {
+    public String getPlacement() {
         return placement;
     }
 
-    public void setPlacement(Integer placement) {
+    public void setPlacement(String placement) {
         this.placement = placement;
     }
 
@@ -86,14 +72,19 @@ public class Shelf {
         this.rack = rack;
     }
 
-    public List<Positions> getPositions() {
-        return positions;
+    public List<Boxes> getBoxes() {
+        return boxes;
     }
 
-    public void setPositions(List<Positions> positions) {
-        this.positions = positions;
+    public void setBoxes(List<Boxes> boxes) {
+        this.boxes = boxes;
     }
 
+    @Override
+    public String toString() {
+        return "Shelf [sid=" + sid + ", level=" + level + ", ShelfNumber=" + ShelfNumber + ", placement=" + placement
+                + ", rack=" + rack + ", boxes=" + boxes + "]";
+    }
 
 
 
