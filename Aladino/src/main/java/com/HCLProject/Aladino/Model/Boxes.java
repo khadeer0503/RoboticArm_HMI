@@ -5,9 +5,6 @@ package com.HCLProject.Aladino.Model;
 
 import jakarta.persistence.*;
 
-
-
-
 @Entity
 public class Boxes {
 	@Id
@@ -16,21 +13,23 @@ public class Boxes {
 	private String name;
 	private String dimension;
 	private String weight;
-	@ManyToOne
-	@JoinColumn(name = "shelf_Id")
-	private Shelf shelf;
+@OneToOne(mappedBy = "boxes")
+	private Positions positions;
+	// @ManyToOne
+	// @JoinColumn(name = "shelf_Id")
+	// private Shelf shelf;
 	//private Positions positions;
 
 	public Boxes() {
 		super();
 	}
 
-	public Boxes(Long id, String name, String dimension, String weight, Shelf shelf) {
+	public Boxes(Long id, String name, String dimension, String weight, Positions positions) {
 		this.id = id;
 		this.name = name;
 		this.dimension = dimension;
 		this.weight = weight;
-		this.shelf = shelf;
+		this.positions = positions;
 	}
 
 	public Long getId() {
@@ -65,22 +64,19 @@ public class Boxes {
 		this.weight = weight;
 	}
 
-	public Shelf getShelf() {
-		return shelf;
+	public Positions getPositions() {
+		return positions;
 	}
 
-	public void setShelf(Shelf shelf) {
-		this.shelf = shelf;
+	public void setPositions(Positions positions) {
+		this.positions = positions;
 	}
 
 	@Override
 	public String toString() {
-		return "Boxes{" +
-				"id=" + id +
-				", name='" + name + '\'' +
-				", dimension='" + dimension + '\'' +
-				", weight='" + weight + '\'' +
-				", shelf=" + shelf +
-				'}';
+		return "Boxes [id=" + id + ", name=" + name + ", dimension=" + dimension + ", weight=" + weight + ", positions="
+				+ positions + "]";
 	}
+
+
 }

@@ -69,8 +69,8 @@ private ShelfService shelfService;
 		public String addBox(Model m)
 		{
     		m.addAttribute("title","HCL Aladino_Add");
-			List<Shelf> listShelf = this.shelfService.getAllShelfs();
-			m.addAttribute("listShelf", listShelf);
+			// List<Shelf> listShelf = this.shelfService.getAllShelfs();
+			// m.addAttribute("listShelf", listShelf);
 			m.addAttribute("boxes", new Boxes());
 			return "addBox";
 		} 

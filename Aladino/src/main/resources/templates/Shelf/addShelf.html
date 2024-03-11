@@ -35,14 +35,14 @@
                                 <!--    Shelf Level -->
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default"> Shelf Level</span>
-                                    <input type="text" class="form-control" aria-label="Sizing example input"
+                                    <input type="number" class="form-control" aria-label="Sizing example input"
                                         aria-describedby="inputGroup-sizing-default" id="validationDefault01"
-                                        th:field="*{level}" name="level" placeholder="Shelf Level " th:value="${shelf.level}" required >
+                                        th:field="*{level}" name="level" placeholder="Shelf Level Max= 5 example:(1,2,3,4,5)" th:value="${shelf.level}" required >
                                 </div>
 
                                 <!--  Shelf shelfNumber -->
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text" id="inputGroup-sizing-default"> Shelf Number</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default"> Shelf Name</span>
                                     <input type="text" class="form-control" aria-label="Sizing example input"
                                         aria-describedby="inputGroup-sizing-default" id="validationDefault01"
                                         th:field="*{shelfNumber}" name="shelfNumber" placeholder="shelf serial Number " th:value="${shelf.shelfNumber}" required >
@@ -50,10 +50,10 @@
 
                                 <!--  Shelf Placement -->
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text" id="inputGroup-sizing-default"> Shelf Placement</span>
-                                    <input type="text" class="form-control" aria-label="Sizing example input"
+                                    <span class="input-group-text" id="inputGroup-sizing-default"> Shelf Position</span>
+                                    <input type="number" class="form-control" aria-label="Sizing example input"
                                         aria-describedby="inputGroup-sizing-default" id="validationDefault01"
-                                        th:field="*{placement}" name="placement" placeholder="placement " th:value="${shelf.placement}" required >
+                                        th:field="*{placement}" name="placement" placeholder="placement position Max= 5 example:(1,2,3,4,5) " th:value="${shelf.placement}" required >
                                 </div>
 
                                 <!-- Rack details -->
@@ -71,16 +71,16 @@
 
                                     <!-- Box details -->
 
-									<div class="input-group mb-3">
-										<span class="input-group-text">Boxes </span>
-										<select th:field="*{boxes}" class="form-select " aria-label="Default select example"
-											name="boxes"   required>
-											<th:block th:each="list : ${listBoxes}">
-												<option th:text="${list.id}" th:value="${list.id}"></option>
-											</th:block>
-										</select>
+<!--									<div class="input-group mb-3">-->
+<!--										<span class="input-group-text">Boxes </span>-->
+<!--										<select th:field="*{boxes}" class="form-select " aria-label="Default select example"-->
+<!--											name="boxes"   required>-->
+<!--											<th:block th:each="list : ${listBoxes}">-->
+<!--												<option th:text="${list.id}" th:value="${list.id}"></option>-->
+<!--											</th:block>-->
+<!--										</select>-->
 
-									</div>
+<!--									</div>-->
 
                                 <div class="card-footer bg-transparent  d-grid gap-2 m-25"
                                     style="max-width: 100%;margin-top: 50px;">

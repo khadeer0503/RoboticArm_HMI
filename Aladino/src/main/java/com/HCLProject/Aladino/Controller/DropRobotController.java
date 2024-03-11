@@ -21,7 +21,7 @@ public class DropRobotController {
  	private String runPythonScript(String scriptName) {
  	       StringBuilder output = new StringBuilder();
  	        try {
- 	            ProcessBuilder processBuilder = new ProcessBuilder("python", "J:/Aladino/Aladino/src/" + scriptName);
+ 	            ProcessBuilder processBuilder = new ProcessBuilder("python", "src/" + scriptName);
  	            processBuilder.redirectErrorStream(true);
  	            Process process = processBuilder.start();
 
